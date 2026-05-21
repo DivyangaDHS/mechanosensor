@@ -1,0 +1,8 @@
+Replace these files with your actual images:
+- team-member-1.jpg  → Photo of team member 1 (Hardware Lead)
+- team-member-2.jpg  → Photo of team member 2 (ML Engineer)
+- team-member-3.jpg  → Photo of team member 3 (Software Dev)
+- team-member-4.jpg  → Photo of team member 4 (Research & Docs)
+- project-banner.jpg → Project/lab photo for hero section
+
+Recommended size: 400x400px for team photos (square, will be cropped circular)
