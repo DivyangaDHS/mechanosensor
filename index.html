@@ -932,7 +932,7 @@
                     <div class="panel-header">
                         <span class="panel-week-badge">WEEK 4–5</span>
                         <h3>Hardware Design & Schematic Drafting</h3>
-                        <div class="panel-status"><span class="status-dot in-progress"></span> Ongoing</div>
+                        <div class="panel-status"><span class="status-dot in-progress"></span> Completed</div>
                     </div>
                     <div class="panel-body">
                         <div class="row g-4">
@@ -945,12 +945,23 @@
                                     <li><span class="check"><i class="fas fa-circle" style="font-size:0.5rem;color:var(--text-muted)"></i></span> Plan PCB layout and signal integrity considerations</li>
                                     <li><span class="check"><i class="fas fa-circle" style="font-size:0.5rem;color:var(--text-muted)"></i></span> Peer review and supervisor sign-off on schematics</li>
                                 </ul>
+                                <div style="margin-top:1.5rem;">
+                                    <div style="font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--primary);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.75rem;">📐 Circuit Diagram</div>
+                                    <div style="background:var(--dark);border:1px solid var(--border);border-radius:12px;overflow:hidden;">
+                                        <img src="img/Cct_Diagram.jpeg" alt="Circuit Diagram"
+                                             style="width:100%;display:block;border-radius:12px;"
+                                             onerror="this.parentElement.innerHTML='<div style=\'padding:2rem;text-align:center;color:var(--text-muted);font-size:0.85rem\'>📐 Add Cct_Diagram.jpeg to img/ folder</div>'">
+                                    </div>
+                                    <p style="font-size:0.78rem;color:var(--text-muted);margin-top:0.5rem;font-style:italic;text-align:center">
+                                        System circuit diagram — MPU6050 sensors, servo motors, buck converters & omni-wheel base connected to Jetson Nano
+                                    </p>
+                                </div>
                                 <div class="update-box">
                                     <div class="update-label">📌 Latest Update</div>
-                                    <p>Ongoing - Component Design.</p>
+                                    <p>Ongoing — Component Design. Circuit diagram drafted showing full system connections.</p>
                                     <div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1rem">
                                         <a href="docs/Component-designs.pdf" target="_blank" style="display:inline-flex;align-items:center;gap:6px;background:var(--dark);border:1px solid var(--primary);color:var(--primary);padding:6px 14px;border-radius:6px;font-size:0.8rem;text-decoration:none;font-family:'Space Mono',monospace;">
-                                            <i class="fas fa-file-pdf"></i> Components and Brackets Designs
+                                            <i class="fas fa-file-pdf"></i> Components & Bracket Designs
                                         </a>
                                     </div>
                                 </div>
@@ -987,6 +998,106 @@
                                     <li><span class="check"><i class="fas fa-circle" style="font-size:0.5rem;color:var(--text-muted)"></i></span> Implement Echo State Network reservoir architecture</li>
                                     <li><span class="check"><i class="fas fa-circle" style="font-size:0.5rem;color:var(--text-muted)"></i></span> Develop signal preprocessing and feature extraction pipeline</li>
                                     <li><span class="check"><i class="fas fa-circle" style="font-size:0.5rem;color:var(--text-muted)"></i></span> Code ego-motion estimation and cancellation module</li>
+
+                                    <!-- Accelerometer check -->
+                                    <li style="flex-direction:column;align-items:flex-start;gap:0.75rem;padding:1rem 0;">
+                                        <div style="display:flex;align-items:flex-start;gap:10px;width:100%">
+                                            <span class="check"><i class="fas fa-circle" style="font-size:0.5rem;color:var(--text-muted)"></i></span>
+                                            <span>Verify accelerometer (MPU6050) connectivity and data output</span>
+                                        </div>
+                                        <div style="width:100%;margin-top:0.75rem;">
+                                            <div class="row g-3">
+                                                <div class="col-sm-5">
+                                                    <div style="background:var(--dark);border:1px solid var(--border);border-radius:10px;overflow:hidden;">
+                                                        <img src="img/accelometer.jpeg" alt="Accelerometer Setup"
+                                                             style="width:100%;display:block;"
+                                                             onerror="this.parentElement.innerHTML='<div style=\'padding:1.5rem;text-align:center;color:var(--text-muted);font-size:0.8rem\'>📸 Add accelometer.jpeg to img/</div>'">
+                                                        <div style="padding:0.5rem 0.75rem;font-size:0.72rem;color:var(--text-muted);font-style:italic;text-align:center;border-top:1px solid var(--border);">
+                                                            MPU6050 wired to Arduino
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-7">
+                                                    <div style="background:var(--dark);border:1px solid var(--border);border-radius:10px;overflow:hidden;">
+                                                        <div style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;">
+                                                            <span style="font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--primary)">sensor_check.ino</span>
+                                                            <a href="code/sensor_check.ino" download style="display:inline-flex;align-items:center;gap:5px;background:rgba(0,201,167,0.1);border:1px solid rgba(0,201,167,0.3);color:var(--primary);padding:3px 10px;border-radius:6px;font-size:0.7rem;text-decoration:none;font-family:'Space Mono',monospace;">
+                                                                <i class="fas fa-download"></i> Download
+                                                            </a>
+                                                        </div>
+                                                        <pre style="margin:0;padding:0.75rem 1rem;font-family:'Space Mono',monospace;font-size:0.68rem;color:var(--text-muted);overflow-x:auto;line-height:1.6;max-height:200px;overflow-y:auto;"><code><span style="color:#7B5EA7">#include</span> <span style="color:#00C9A7">&lt;Wire.h&gt;</span>
+<span style="color:#7B5EA7">#include</span> <span style="color:#00C9A7">&lt;MPU6050_light.h&gt;</span>
+
+MPU6050 mpu(Wire);
+
+<span style="color:#8B949E">// Initialise &amp; calibrate</span>
+<span style="color:#7B5EA7">void</span> setup() {
+  Serial.begin(<span style="color:#00C9A7">115200</span>);
+  Wire.begin();
+  mpu.begin();
+  mpu.calcOffsets(<span style="color:#00C9A7">true</span>, <span style="color:#00C9A7">true</span>);
+}
+
+<span style="color:#7B5EA7">void</span> loop() {
+  mpu.update();
+  Serial.print(<span style="color:#00C9A7">"ACCEL X: "</span>);
+  Serial.println(mpu.getAccX());
+  Serial.print(<span style="color:#00C9A7">"GYRO  X: "</span>);
+  Serial.println(mpu.getGyroX());
+  delay(<span style="color:#00C9A7">500</span>);
+}</code></pre>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <!-- Platform check -->
+                                    <li style="flex-direction:column;align-items:flex-start;gap:0.75rem;padding:1rem 0;">
+                                        <div style="display:flex;align-items:flex-start;gap:10px;width:100%">
+                                            <span class="check"><i class="fas fa-circle" style="font-size:0.5rem;color:var(--text-muted)"></i></span>
+                                            <span>Verify omni-directional wheel platform movement and PID control</span>
+                                        </div>
+                                        <div style="width:100%;margin-top:0.75rem;">
+                                            <div style="background:var(--dark);border:1px solid var(--border);border-radius:10px;overflow:hidden;">
+                                                <div style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;">
+                                                    <div style="display:flex;align-items:center;gap:8px;">
+                                                        <i class="fas fa-microchip" style="color:var(--primary);font-size:0.75rem"></i>
+                                                        <span style="font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--primary)">platform_check.ino</span>
+                                                        <span style="font-size:0.68rem;color:var(--text-muted)">— Omni4WD PID · 4 wheel control</span>
+                                                    </div>
+                                                    <a href="code/platform_check.ino" download style="display:inline-flex;align-items:center;gap:5px;background:rgba(0,201,167,0.1);border:1px solid rgba(0,201,167,0.3);color:var(--primary);padding:3px 10px;border-radius:6px;font-size:0.7rem;text-decoration:none;font-family:'Space Mono',monospace;">
+                                                        <i class="fas fa-download"></i> Download
+                                                    </a>
+                                                </div>
+                                                <pre style="margin:0;padding:0.75rem 1rem;font-family:'Space Mono',monospace;font-size:0.68rem;color:var(--text-muted);overflow-x:auto;line-height:1.6;max-height:200px;overflow-y:auto;"><code><span style="color:#7B5EA7">#include</span> <span style="color:#00C9A7">&lt;Omni4WD.h&gt;</span>
+<span style="color:#7B5EA7">#include</span> <span style="color:#00C9A7">&lt;MotorWheel.h&gt;</span>
+<span style="color:#7B5EA7">#include</span> <span style="color:#00C9A7">&lt;PID_Beta6.h&gt;</span>
+
+irqISR(irq1,isr1);
+MotorWheel wheel1(<span style="color:#00C9A7">3</span>,<span style="color:#00C9A7">2</span>,<span style="color:#00C9A7">4</span>,<span style="color:#00C9A7">5</span>,&amp;irq1);
+irqISR(irq2,isr2);
+MotorWheel wheel2(<span style="color:#00C9A7">11</span>,<span style="color:#00C9A7">12</span>,<span style="color:#00C9A7">14</span>,<span style="color:#00C9A7">15</span>,&amp;irq2);
+irqISR(irq3,isr3);
+MotorWheel wheel3(<span style="color:#00C9A7">9</span>,<span style="color:#00C9A7">8</span>,<span style="color:#00C9A7">16</span>,<span style="color:#00C9A7">17</span>,&amp;irq3);
+irqISR(irq4,isr4);
+MotorWheel wheel4(<span style="color:#00C9A7">10</span>,<span style="color:#00C9A7">7</span>,<span style="color:#00C9A7">18</span>,<span style="color:#00C9A7">19</span>,&amp;irq4);
+
+Omni4WD Omni(&amp;wheel1,&amp;wheel2,&amp;wheel3,&amp;wheel4);
+
+<span style="color:#7B5EA7">void</span> setup() {
+  TCCR1B=TCCR1B&amp;<span style="color:#00C9A7">0xf8</span>|<span style="color:#00C9A7">0x01</span>;
+  TCCR2B=TCCR2B&amp;<span style="color:#00C9A7">0xf8</span>|<span style="color:#00C9A7">0x01</span>;
+  Omni.PIDEnable(<span style="color:#00C9A7">0.31</span>,<span style="color:#00C9A7">0.01</span>,<span style="color:#00C9A7">0</span>,<span style="color:#00C9A7">10</span>);
+}
+
+<span style="color:#7B5EA7">void</span> loop() {
+  Omni.demoActions(<span style="color:#00C9A7">200</span>,<span style="color:#00C9A7">5000</span>,<span style="color:#00C9A7">500</span>,<span style="color:#00C9A7">false</span>);
+}</code></pre>
+                                            </div>
+                                        </div>
+                                    </li>
+
                                     <li><span class="check"><i class="fas fa-circle" style="font-size:0.5rem;color:var(--text-muted)"></i></span> Build firmware for microcontroller sensor data acquisition</li>
                                     <li><span class="check"><i class="fas fa-circle" style="font-size:0.5rem;color:var(--text-muted)"></i></span> Unit testing of individual software components</li>
                                 </ul>
