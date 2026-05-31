@@ -1001,31 +1001,39 @@
 
                                     <!-- Accelerometer check -->
                                     <li style="flex-direction:column;align-items:flex-start;gap:0.75rem;padding:1rem 0;">
-                                        <div style="display:flex;align-items:flex-start;gap:10px;width:100%">
-                                            <span class="check"><i class="fas fa-circle" style="font-size:0.5rem;color:var(--text-muted)"></i></span>
-                                            <span>Verify accelerometer (MPU6050) connectivity and data output</span>
+                                        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px;width:100%;flex-wrap:wrap;">
+                                            <div style="display:flex;align-items:flex-start;gap:10px;">
+                                                <span class="check"><i class="fas fa-circle" style="font-size:0.5rem;color:var(--text-muted)"></i></span>
+                                                <span>Verify accelerometer (MPU6050) connectivity and data output</span>
+                                            </div>
+                                            <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+                                                <button onclick="toggleBlock('accel-img')" style="display:inline-flex;align-items:center;gap:6px;background:var(--dark3);border:1px solid var(--border);color:var(--text-muted);padding:4px 12px;border-radius:6px;font-size:0.75rem;cursor:pointer;font-family:'Space Mono',monospace;transition:all 0.25s;" onmouseover="this.style.borderColor='var(--primary)';this.style.color='var(--primary)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--text-muted)'">
+                                                    <i class="fas fa-image"></i> Photo
+                                                </button>
+                                                <button onclick="toggleBlock('accel-code')" style="display:inline-flex;align-items:center;gap:6px;background:var(--dark3);border:1px solid var(--border);color:var(--text-muted);padding:4px 12px;border-radius:6px;font-size:0.75rem;cursor:pointer;font-family:'Space Mono',monospace;transition:all 0.25s;" onmouseover="this.style.borderColor='var(--primary)';this.style.color='var(--primary)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--text-muted)'">
+                                                    <i class="fas fa-code"></i> Code
+                                                </button>
+                                            </div>
                                         </div>
-                                        <div style="width:100%;margin-top:0.75rem;">
-                                            <div class="row g-3">
-                                                <div class="col-sm-5">
-                                                    <div style="background:var(--dark);border:1px solid var(--border);border-radius:10px;overflow:hidden;">
-                                                        <img src="img/accelometer.jpeg" alt="Accelerometer Setup"
-                                                             style="width:100%;display:block;"
-                                                             onerror="this.parentElement.innerHTML='<div style=\'padding:1.5rem;text-align:center;color:var(--text-muted);font-size:0.8rem\'>📸 Add accelometer.jpeg to img/</div>'">
-                                                        <div style="padding:0.5rem 0.75rem;font-size:0.72rem;color:var(--text-muted);font-style:italic;text-align:center;border-top:1px solid var(--border);">
-                                                            MPU6050 wired to Arduino
-                                                        </div>
-                                                    </div>
+                                        <div id="accel-img" style="display:none;width:100%;margin-top:0.75rem;">
+                                            <div style="background:var(--dark);border:1px solid var(--border);border-radius:10px;overflow:hidden;max-width:400px;">
+                                                <img src="img/accelometer.jpeg" alt="Accelerometer Setup"
+                                                     style="width:100%;display:block;"
+                                                     onerror="this.parentElement.innerHTML='<div style=\'padding:1.5rem;text-align:center;color:var(--text-muted);font-size:0.8rem\'>📸 Add accelometer.jpeg to img/</div>'">
+                                                <div style="padding:0.5rem 0.75rem;font-size:0.72rem;color:var(--text-muted);font-style:italic;text-align:center;border-top:1px solid var(--border);">
+                                                    MPU6050 wired to Arduino
                                                 </div>
-                                                <div class="col-sm-7">
-                                                    <div style="background:var(--dark);border:1px solid var(--border);border-radius:10px;overflow:hidden;">
-                                                        <div style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;">
-                                                            <span style="font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--primary)">sensor_check.ino</span>
-                                                            <a href="code/sensor_check.ino" download style="display:inline-flex;align-items:center;gap:5px;background:rgba(0,201,167,0.1);border:1px solid rgba(0,201,167,0.3);color:var(--primary);padding:3px 10px;border-radius:6px;font-size:0.7rem;text-decoration:none;font-family:'Space Mono',monospace;">
-                                                                <i class="fas fa-download"></i> Download
-                                                            </a>
-                                                        </div>
-                                                        <pre style="margin:0;padding:0.75rem 1rem;font-family:'Space Mono',monospace;font-size:0.68rem;color:var(--text-muted);overflow-x:auto;line-height:1.6;max-height:200px;overflow-y:auto;"><code><span style="color:#7B5EA7">#include</span> <span style="color:#00C9A7">&lt;Wire.h&gt;</span>
+                                            </div>
+                                        </div>
+                                        <div id="accel-code" style="display:none;width:100%;margin-top:0.75rem;">
+                                            <div style="background:var(--dark);border:1px solid var(--border);border-radius:10px;overflow:hidden;">
+                                                <div style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;">
+                                                    <span style="font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--primary)">sensor_check.ino</span>
+                                                    <a href="code/sensor_check.ino" download style="display:inline-flex;align-items:center;gap:5px;background:rgba(0,201,167,0.1);border:1px solid rgba(0,201,167,0.3);color:var(--primary);padding:3px 10px;border-radius:6px;font-size:0.7rem;text-decoration:none;font-family:'Space Mono',monospace;">
+                                                        <i class="fas fa-download"></i> Download
+                                                    </a>
+                                                </div>
+                                                <pre style="margin:0;padding:0.75rem 1rem;font-family:'Space Mono',monospace;font-size:0.68rem;color:var(--text-muted);overflow-x:auto;line-height:1.6;max-height:200px;overflow-y:auto;"><code><span style="color:#7B5EA7">#include</span> <span style="color:#00C9A7">&lt;Wire.h&gt;</span>
 <span style="color:#7B5EA7">#include</span> <span style="color:#00C9A7">&lt;MPU6050_light.h&gt;</span>
 
 MPU6050 mpu(Wire);
@@ -1046,19 +1054,22 @@ MPU6050 mpu(Wire);
   Serial.println(mpu.getGyroX());
   delay(<span style="color:#00C9A7">500</span>);
 }</code></pre>
-                                                    </div>
-                                                </div>
                                             </div>
                                         </div>
                                     </li>
 
                                     <!-- Platform check -->
                                     <li style="flex-direction:column;align-items:flex-start;gap:0.75rem;padding:1rem 0;">
-                                        <div style="display:flex;align-items:flex-start;gap:10px;width:100%">
-                                            <span class="check"><i class="fas fa-circle" style="font-size:0.5rem;color:var(--text-muted)"></i></span>
-                                            <span>Verify omni-directional wheel platform movement and PID control</span>
+                                        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px;width:100%;flex-wrap:wrap;">
+                                            <div style="display:flex;align-items:flex-start;gap:10px;">
+                                                <span class="check"><i class="fas fa-circle" style="font-size:0.5rem;color:var(--text-muted)"></i></span>
+                                                <span>Verify omni-directional wheel platform movement and PID control</span>
+                                            </div>
+                                            <button onclick="toggleBlock('platform-code')" style="display:inline-flex;align-items:center;gap:6px;background:var(--dark3);border:1px solid var(--border);color:var(--text-muted);padding:4px 12px;border-radius:6px;font-size:0.75rem;cursor:pointer;font-family:'Space Mono',monospace;transition:all 0.25s;" onmouseover="this.style.borderColor='var(--primary)';this.style.color='var(--primary)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--text-muted)'">
+                                                <i class="fas fa-code"></i> Code
+                                            </button>
                                         </div>
-                                        <div style="width:100%;margin-top:0.75rem;">
+                                        <div id="platform-code" style="display:none;width:100%;margin-top:0.75rem;">
                                             <div style="background:var(--dark);border:1px solid var(--border);border-radius:10px;overflow:hidden;">
                                                 <div style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;">
                                                     <div style="display:flex;align-items:center;gap:8px;">
@@ -1676,6 +1687,8 @@ Method: CPG-based control with Hopf oscillators; each contact triggers a 180° p
     <!-- Scripts -->
     <script src="js/bootstrap.bundle.min.js" onerror="this.src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js'"></script>
     <script>
+        function toggleBlock(id) { const el = document.getElementById(id); el.style.display = el.style.display === 'none' ? 'block' : 'none'; }
+
         // Schedule tabs
         function showPanel(id) {
             document.querySelectorAll('.schedule-panel').forEach(p => p.classList.remove('active'));
