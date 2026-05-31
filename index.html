@@ -945,9 +945,9 @@
                                     <li><span class="check"><i class="fas fa-circle" style="font-size:0.5rem;color:var(--text-muted)"></i></span> Plan PCB layout and signal integrity considerations</li>
                                     <li><span class="check"><i class="fas fa-circle" style="font-size:0.5rem;color:var(--text-muted)"></i></span> Peer review and supervisor sign-off on schematics</li>
                                 <div style="margin-top:1.5rem;">
-                                    <button onclick="toggleBlock('cct-diagram')" style="display:inline-flex;align-items:center;gap:6px;background:var(--dark3);border:1px solid var(--border);color:var(--text-muted);padding:6px 16px;border-radius:6px;font-size:0.78rem;cursor:pointer;font-family:'Space Mono',monospace;transition:all 0.25s;" onmouseover="this.style.borderColor='var(--primary)';this.style.color='var(--primary)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--text-muted)'">
+                                    <a href="img/Cct_Diagram.jpeg" target="_blank" style="display:inline-flex;align-items:center;gap:6px;background:var(--dark3);border:1px solid var(--border);color:var(--text-muted);padding:6px 16px;border-radius:6px;font-size:0.78rem;cursor:pointer;font-family:'Space Mono',monospace;transition:all 0.25s;text-decoration:none;" onmouseover="this.style.borderColor='var(--primary)';this.style.color='var(--primary)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--text-muted)'">
                                         <i class="fas fa-image"></i> View Circuit Diagram
-                                    </button>
+                                    </a>
                                     <div id="cct-diagram" style="display:none;margin-top:1rem;">
                                         <div style="background:var(--dark);border:1px solid var(--border);border-radius:12px;overflow:hidden;">
                                             <img src="img/Cct Diagram.jpeg" alt="Circuit Diagram"
@@ -1010,12 +1010,12 @@
                                                 <span>Verify accelerometer (MPU6050) connectivity and data output</span>
                                             </div>
                                             <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
-                                                <button onclick="toggleBlock('accel-img')" style="display:inline-flex;align-items:center;gap:6px;background:var(--dark3);border:1px solid var(--border);color:var(--text-muted);padding:4px 12px;border-radius:6px;font-size:0.75rem;cursor:pointer;font-family:'Space Mono',monospace;transition:all 0.25s;" onmouseover="this.style.borderColor='var(--primary)';this.style.color='var(--primary)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--text-muted)'">
+                                                <a href="img/accelometer.jpeg" target="_blank" style="display:inline-flex;align-items:center;gap:6px;background:var(--dark3);border:1px solid var(--border);color:var(--text-muted);padding:4px 12px;border-radius:6px;font-size:0.75rem;font-family:'Space Mono',monospace;transition:all 0.25s;text-decoration:none;" onmouseover="this.style.borderColor='var(--primary)';this.style.color='var(--primary)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--text-muted)'">
                                                     <i class="fas fa-image"></i> Photo
-                                                </button>
-                                                <button onclick="toggleBlock('accel-code')" style="display:inline-flex;align-items:center;gap:6px;background:var(--dark3);border:1px solid var(--border);color:var(--text-muted);padding:4px 12px;border-radius:6px;font-size:0.75rem;cursor:pointer;font-family:'Space Mono',monospace;transition:all 0.25s;" onmouseover="this.style.borderColor='var(--primary)';this.style.color='var(--primary)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--text-muted)'">
-                                                    <i class="fas fa-code"></i> Code
-                                                </button>
+                                                </a>
+                                                <a href="code/sensor_check.ino" download style="display:inline-flex;align-items:center;gap:6px;background:var(--dark3);border:1px solid var(--border);color:var(--text-muted);padding:4px 12px;border-radius:6px;font-size:0.75rem;font-family:'Space Mono',monospace;transition:all 0.25s;text-decoration:none;" onmouseover="this.style.borderColor='var(--primary)';this.style.color='var(--primary)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--text-muted)'">
+                                                    <i class="fas fa-download"></i> Code
+                                                </a>
                                             </div>
                                         </div>
                                         <div id="accel-img" style="display:none;width:100%;margin-top:0.75rem;">
@@ -1068,9 +1068,9 @@ MPU6050 mpu(Wire);
                                                 <span class="check"><i class="fas fa-circle" style="font-size:0.5rem;color:var(--text-muted)"></i></span>
                                                 <span>Verify omni-directional wheel platform movement and PID control</span>
                                             </div>
-                                            <button onclick="toggleBlock('platform-code')" style="display:inline-flex;align-items:center;gap:6px;background:var(--dark3);border:1px solid var(--border);color:var(--text-muted);padding:4px 12px;border-radius:6px;font-size:0.75rem;cursor:pointer;font-family:'Space Mono',monospace;transition:all 0.25s;" onmouseover="this.style.borderColor='var(--primary)';this.style.color='var(--primary)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--text-muted)'">
-                                                <i class="fas fa-code"></i> Code
-                                            </button>
+                                            <a href="code/platform_check.ino" download style="display:inline-flex;align-items:center;gap:6px;background:var(--dark3);border:1px solid var(--border);color:var(--text-muted);padding:4px 12px;border-radius:6px;font-size:0.75rem;font-family:'Space Mono',monospace;transition:all 0.25s;text-decoration:none;" onmouseover="this.style.borderColor='var(--primary)';this.style.color='var(--primary)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--text-muted)'">
+                                                <i class="fas fa-download"></i> Code
+                                            </a>
                                         </div>
                                         <div id="platform-code" style="display:none;width:100%;margin-top:0.75rem;">
                                             <div style="background:var(--dark);border:1px solid var(--border);border-radius:10px;overflow:hidden;">
