@@ -630,16 +630,17 @@
                     <div class="row g-3 align-items-start">
                         <div class="col-lg-9">
                             <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem;flex-wrap:wrap">
-                                <span style="background:rgba(0,201,167,0.1);border:1px solid rgba(0,201,167,0.3);color:var(--primary);font-family:'Space Mono',monospace;font-size:0.7rem;padding:3px 10px;border-radius:100px">[1]</span>
-                                <span style="font-family:'Space Mono',monospace;font-size:0.72rem;color:var(--text-muted)"></span>
+                                <span style="background:rgba(0,201,167,0.1);border:1px solid rgba(0,201,167,0.3);color:var(--primary);font-family:'Space Mono',monospace;font-size:0.7rem;padding:3px 10px;border-radius:100px">[1]
+                                </span>
+                                <span style="font-family:'Space Mono',monospace;font-size:0.72rem;color:var(--text-muted)">
+                                </span>
                             </div>
-                            <h5 style="font-family:'DM Serif Display',serif;font-weight:400;color:var(--text);margin-bottom:0.5rem;font-size:1.1rem">A Forward Model for an Active Tactile Sensor Using Echo State Networks</h5>
-                            <p style="font-size:0.85rem;color:var(--primary);margin-bottom:0.75rem;font-style:italic">Dr. Nalin Harischandra, Volker Durr · 2012</p>
-                            <p style="font-size:0.9rem;color:var(--text-muted);line-height:1.7;margin:0">Objective: Predict expected sensor reading of robotic antenna to cancel ego-motion
-Method: Echo State Network (ESN) — a recurrent neural network for chaotic time series
-Setup: Accelerometer on antenna tip + accelerometer on robot platform + servo position
-Key result: Successfully detected 34 true touch events from 35 disturbances with 100% accuracy
-Relevance: This is the core bio-inspired algorithm our project builds upon</p>
+                            <h5 style="font-family:'DM Serif Display',serif;font-weight:400;color:var(--text);margin-bottom:0.5rem;font-size:1.1rem">A Forward Model for an Active Tactile Sensor Using Echo State Networks
+                            </h5>
+                            <p style="font-size:0.85rem;color:var(--primary);margin-bottom:0.75rem;font-style:italic">Dr. Nalin Harischandra, Volker Durr · 2012
+                            </p>
+                            <p style="font-size:0.9rem;color:var(--text-muted);line-height:1.7;margin:0">This paper proposes an Echo State Network (ESN)-based forward model to predict the vibration signal expected at the robotic antenna during movement. The model uses antenna position, robot platform acceleration, and sensor data to estimate self-generated vibrations caused by ego-motion. By comparing the predicted and actual signals, the system successfully separated true contact events from motion-induced disturbances, correctly detecting 34 touch events with 100% accuracy. This ESN-based ego-motion cancellation method forms the core algorithm of our project.
+                            </p>
                         </div>
                         <div class="col-lg-3 d-flex align-items-center justify-content-lg-end">
                             <a href="docs/paper-1.pdf" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:var(--dark);border:1px solid var(--primary);color:var(--primary);padding:8px 18px;border-radius:8px;font-size:0.8rem;text-decoration:none;font-family:'Space Mono',monospace;white-space:nowrap;transition:all 0.25s" onmouseover="this.style.background='rgba(0,201,167,0.1)'" onmouseout="this.style.background='var(--dark)'">
@@ -656,18 +657,18 @@ Relevance: This is the core bio-inspired algorithm our project builds upon</p>
                     <div class="row g-3 align-items-start">
                         <div class="col-lg-9">
                             <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem;flex-wrap:wrap">
-                                <span style="background:rgba(0,201,167,0.1);border:1px solid rgba(0,201,167,0.3);color:var(--primary);font-family:'Space Mono',monospace;font-size:0.7rem;padding:3px 10px;border-radius:100px">[2]</span>
-                                <span style="font-family:'Space Mono',monospace;font-size:0.72rem;color:var(--text-muted)"></span>
+                                <span style="background:rgba(0,201,167,0.1);border:1px solid rgba(0,201,167,0.3);color:var(--primary);font-family:'Space Mono',monospace;font-size:0.7rem;padding:3px 10px;border-radius:100px">[2]
+                                </span>
+                                <span style="font-family:'Space Mono',monospace;font-size:0.72rem;color:var(--text-muted)">
+                                </span>
                             </div>
                             <h5 style="font-family:'DM Serif Display',serif;font-weight:400;color:var(--text);margin-bottom:0.5rem;font-size:1.1rem">Prediction of Self-induced Mechanoreceptive Sensor Readings in An
-Insect-inspired Active Tactile Sensing System</h5>
-                            <p style="font-size:0.85rem;color:var(--primary);margin-bottom:0.75rem;font-style:italic">Dr.Nalin Harischandra , Volker Durr· 2013</p>
-                            <p style="font-size:0.9rem;color:var(--text-muted);line-height:1.7;margin:0">Objective: Improve contact distance estimation and material classification using the same antenna sensor
-Method: FFT-based dominant frequency analysis + SVM classifier (vs ANN benchmark)
-Key finding: Vibration mode changes at 80% of antenna length — causes non-linear distance readings near tip
-Hardware: MPU6050 accelerometer on acrylic tube + Raspberry Pi 3 + Pan-Tilt unit
-Key result: SVM achieved 99.2% accuracy vs 80.8% for ANN at lower computational cost
-Relevance: Direct predecessor project — same hardware platform and supervisors</p>
+Insect-inspired Active Tactile Sensing System
+                            </h5>
+                            <p style="font-size:0.85rem;color:var(--primary);margin-bottom:0.75rem;font-style:italic">Dr.Nalin Harischandra , Volker Durr· 2013
+                            </p>
+                            <p style="font-size:0.9rem;color:var(--text-muted);line-height:1.7;margin:0">This paper extends the vibration-based tactile sensing system by using two actively moving antennae and an Echo State Network (ESN) to predict self-generated sensor signals. The model combines robot vibration measurements with antenna motion commands to estimate the effects of ego-motion and remove false contact detections. Tested under straight motion, curved motion, and walking-like impacts, the system successfully distinguished 53 true touch events from 252 disturbances with approximately 96% accuracy. This work demonstrates a more advanced version of the sensing platform used in our project.
+                            </p>
                         </div>
                         <div class="col-lg-3 d-flex align-items-center justify-content-lg-end">
                             <a href="docs/paper-2.pdf" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:var(--dark);border:1px solid var(--primary);color:var(--primary);padding:8px 18px;border-radius:8px;font-size:0.8rem;text-decoration:none;font-family:'Space Mono',monospace;white-space:nowrap;transition:all 0.25s" onmouseover="this.style.background='rgba(0,201,167,0.1)'" onmouseout="this.style.background='var(--dark)'">
@@ -684,12 +685,17 @@ Relevance: Direct predecessor project — same hardware platform and supervisors
                     <div class="row g-3 align-items-start">
                         <div class="col-lg-9">
                             <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem;flex-wrap:wrap">
-                                <span style="background:rgba(0,201,167,0.1);border:1px solid rgba(0,201,167,0.3);color:var(--primary);font-family:'Space Mono',monospace;font-size:0.7rem;padding:3px 10px;border-radius:100px">[3]</span>
-                                <span style="font-family:'Space Mono',monospace;font-size:0.72rem;color:var(--text-muted)"></span>
+                                <span style="background:rgba(0,201,167,0.1);border:1px solid rgba(0,201,167,0.3);color:var(--primary);font-family:'Space Mono',monospace;font-size:0.7rem;padding:3px 10px;border-radius:100px">[3]
+                                </span>
+                                <span style="font-family:'Space Mono',monospace;font-size:0.72rem;color:var(--text-muted)">
+                                </span>
                             </div>
-                            <h5 style="font-family:'DM Serif Display',serif;font-weight:400;color:var(--text);margin-bottom:0.5rem;font-size:1.1rem">Distance Estimation And Material Classification of a Compliant Tactile Sensor Using Vibration Modes and Support Vector Machine</h5>
-                            <p style="font-size:0.85rem;color:var(--primary);margin-bottom:0.75rem;font-style:italic">Dr. N. Harischandra, Dr. L. Samaranayake, S.R. Gunasekara, H. N. T. K. Kaldera</p>
-                            <p style="font-size:0.9rem;color:var(--text-muted);line-height:1.7;margin:0">Objective: Improve contact distance estimation and material classification using the same antenna sensor Method: FFT-based dominant frequency analysis + SVM classifier (vs ANN benchmark) Key finding: Vibration mode changes at 80% of antenna length — causes non-linear distance readings near tip Hardware: MPU6050 accelerometer on acrylic tube + Raspberry Pi 3 + Pan-Tilt unit Key result: SVM achieved 99.2% accuracy vs 80.8% for ANN at lower computational cost Relevance: Direct predecessor project — same hardware platform and supervisors</p>
+                            <h5 style="font-family:'DM Serif Display',serif;font-weight:400;color:var(--text);margin-bottom:0.5rem;font-size:1.1rem">Distance Estimation And Material Classification of a Compliant Tactile Sensor Using Vibration Modes and Support Vector Machine
+                            </h5>
+                            <p style="font-size:0.85rem;color:var(--primary);margin-bottom:0.75rem;font-style:italic">Dr. N. Harischandra, Dr. L. Samaranayake, S.R. Gunasekara, H. N. T. K. Kaldera
+                            </p>
+                            <p style="font-size:0.9rem;color:var(--text-muted);line-height:1.7;margin:0">This study improved contact distance estimation and material recognition using a vibration-based robotic antenna. Vibration signals from an MPU6050 accelerometer mounted on an acrylic antenna were analyzed using FFT, and an SVM classifier was used to identify contact properties. The results showed that the antenna vibration mode changes near 80% of its length, causing non-linear distance measurements close to the tip. Compared with an ANN, the SVM achieved 99.2% classification accuracy with lower computational requirements.
+                            </p>
                         </div>
                         <div class="col-lg-3 d-flex align-items-center justify-content-lg-end">
                             <a href="docs/paper-3.pdf" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:var(--dark);border:1px solid var(--primary);color:var(--primary);padding:8px 18px;border-radius:8px;font-size:0.8rem;text-decoration:none;font-family:'Space Mono',monospace;white-space:nowrap;transition:all 0.25s" onmouseover="this.style.background='rgba(0,201,167,0.1)'" onmouseout="this.style.background='var(--dark)'">
@@ -706,13 +712,17 @@ Relevance: Direct predecessor project — same hardware platform and supervisors
                     <div class="row g-3 align-items-start">
                         <div class="col-lg-9">
                             <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem;flex-wrap:wrap">
-                                <span style="background:rgba(0,201,167,0.1);border:1px solid rgba(0,201,167,0.3);color:var(--primary);font-family:'Space Mono',monospace;font-size:0.7rem;padding:3px 10px;border-radius:100px">[4]</span>
-                                <span style="font-family:'Space Mono',monospace;font-size:0.72rem;color:var(--text-muted)"></span>
+                                <span style="background:rgba(0,201,167,0.1);border:1px solid rgba(0,201,167,0.3);color:var(--primary);font-family:'Space Mono',monospace;font-size:0.7rem;padding:3px 10px;border-radius:100px">[4]
+                                </span>
+                                <span style="font-family:'Space Mono',monospace;font-size:0.72rem;color:var(--text-muted)">
+                                </span>
                             </div>
-                            <h5 style="font-family:'DM Serif Display',serif;font-weight:400;color:var(--text);margin-bottom:0.5rem;font-size:1.1rem">Insect-Inspired Tactile Contour Sampling Using Vibration-Based Robotic Antennae</h5>
-                            <p style="font-size:0.85rem;color:var(--primary);margin-bottom:0.75rem;font-style:italic">Thierry Hoinville1, Nalin Harischandra1, Andr´e F. Krause, and Volker D¨urr</p>
-                            <p style="font-size:0.9rem;color:var(--text-muted);line-height:1.7;margin:0">Objective: Physically implement the Contour-net model on a real robot using vibration-based antennae
-Method: CPG-based control with Hopf oscillators; each contact triggers a 180° phase shift causing antenna to "bounce off" surfaces Platform: Two vibration-based antennae mounted on a robotic platform — same type as our project's setup Key result: Successfully traced 3D object contours and localized contact events in 3D space Bio-inspiration: Mimics stick insect (Carausius morosus) antennal searching behavior switching from broad search to local sampling on contact Relevance: Demonstrates the physical platform closest to our project — Pan-Tilt with vibration-based antenna and accelerometer</p>
+                            <h5 style="font-family:'DM Serif Display',serif;font-weight:400;color:var(--text);margin-bottom:0.5rem;font-size:1.1rem">Insect-Inspired Tactile Contour Sampling Using Vibration-Based Robotic Antennae
+                            </h5>
+                            <p style="font-size:0.85rem;color:var(--primary);margin-bottom:0.75rem;font-style:italic">Thierry Hoinville1, Nalin Harischandra1, Andr´e F. Krause, and Volker D¨urr
+                            </p>
+                            <p style="font-size:0.9rem;color:var(--text-muted);line-height:1.7;margin:0">This study implemented the Contour-net algorithm on a robot with vibration-based antennae. A Hopf oscillator-based CPG controlled antennal motion, while contact-triggered phase shifts enabled automatic contour following. The system combined tactile sensing and vibration-based distance estimation to localize contacts in 3D space, making it the most relevant physical implementation for our project.
+                            </p>
                         </div>
                         <div class="col-lg-3 d-flex align-items-center justify-content-lg-end">
                             <a href="docs/paper-4.pdf" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:var(--dark);border:1px solid var(--primary);color:var(--primary);padding:8px 18px;border-radius:8px;font-size:0.8rem;text-decoration:none;font-family:'Space Mono',monospace;white-space:nowrap;transition:all 0.25s" onmouseover="this.style.background='rgba(0,201,167,0.1)'" onmouseout="this.style.background='var(--dark)'">
@@ -729,12 +739,17 @@ Method: CPG-based control with Hopf oscillators; each contact triggers a 180° p
                     <div class="row g-3 align-items-start">
                         <div class="col-lg-9">
                             <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem;flex-wrap:wrap">
-                                <span style="background:rgba(0,201,167,0.1);border:1px solid rgba(0,201,167,0.3);color:var(--primary);font-family:'Space Mono',monospace;font-size:0.7rem;padding:3px 10px;border-radius:100px">[5]</span>
-                                <span style="font-family:'Space Mono',monospace;font-size:0.72rem;color:var(--text-muted)"></span>
+                                <span style="background:rgba(0,201,167,0.1);border:1px solid rgba(0,201,167,0.3);color:var(--primary);font-family:'Space Mono',monospace;font-size:0.7rem;padding:3px 10px;border-radius:100px">[5]
+                                </span>
+                                <span style="font-family:'Space Mono',monospace;font-size:0.72rem;color:var(--text-muted)">
+                                </span>
                             </div>
-                            <h5 style="font-family:'DM Serif Display',serif;font-weight:400;color:var(--text);margin-bottom:0.5rem;font-size:1.1rem">Stable phase-shift despite quasi-rhythmic movements: a CPG-driven dynamic model of active tactile exploration in an insect</h5>
-                            <p style="font-size:0.85rem;color:var(--primary);margin-bottom:0.75rem;font-style:italic">Nalin Harischandra, André F. Krause 2 and Volker Dürr · 2015</p>
-                            <p style="font-size:0.9rem;color:var(--text-muted);line-height:1.7;margin:0">Objective: Model the Central Pattern Generator (CPG) driving rhythmic antennal movements of stick insects Method: Two-level CPG — Hopf oscillators for rhythm generation + Pattern Formation Network for joint kinematics (16 Fourier components) Key finding: SP joint must lead HS joint by exactly 10–30° to produce natural elliptical antenna tip trajectory — outside this range, the pattern collapses Proprioceptor ablation: Removing hair field sensors only changes joint amplitude and offset — the phase coupling remains stable (coded into CPG) Platform: 3D skeletal simulation of stick insect head-antennal system using Python + ODE physics engine Relevance: The CPG framework directly informs how our Pan-Tilt unit should move the antenna — bio-inspired oscillatory movement pattern for efficient contact detection</p>
+                            <h5 style="font-family:'DM Serif Display',serif;font-weight:400;color:var(--text);margin-bottom:0.5rem;font-size:1.1rem">Stable phase-shift despite quasi-rhythmic movements: a CPG-driven dynamic model of active tactile exploration in an insect
+                            </h5>
+                            <p style="font-size:0.85rem;color:var(--primary);margin-bottom:0.75rem;font-style:italic">Nalin Harischandra, André F. Krause 2 and Volker Dürr · 2015
+                            </p>
+                            <p style="font-size:0.9rem;color:var(--text-muted);line-height:1.7;margin:0">This research developed a bio-inspired Central Pattern Generator (CPG) model to reproduce the rhythmic antennal movements of stick insects during active tactile exploration. The controller combined phase-coupled Hopf oscillators for rhythm generation with a pattern formation network based on Fourier components to generate realistic joint movements. Simulations showed that maintaining a stable 10–30° phase lead between antennal joints is essential for producing efficient elliptical scanning trajectories, while proprioceptive sensors mainly regulate movement amplitude rather than coordination. This work provides the biological foundation for the oscillatory antenna motion used in our Pan-Tilt sensing system.
+                            </p>
                         </div>
                         <div class="col-lg-3 d-flex align-items-center justify-content-lg-end">
                             <a href="docs/paper-5.pdf" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:var(--dark);border:1px solid var(--primary);color:var(--primary);padding:8px 18px;border-radius:8px;font-size:0.8rem;text-decoration:none;font-family:'Space Mono',monospace;white-space:nowrap;transition:all 0.25s" onmouseover="this.style.background='rgba(0,201,167,0.1)'" onmouseout="this.style.background='var(--dark)'">
@@ -751,12 +766,17 @@ Method: CPG-based control with Hopf oscillators; each contact triggers a 180° p
                     <div class="row g-3 align-items-start">
                         <div class="col-lg-9">
                             <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem;flex-wrap:wrap">
-                                <span style="background:rgba(0,201,167,0.1);border:1px solid rgba(0,201,167,0.3);color:var(--primary);font-family:'Space Mono',monospace;font-size:0.7rem;padding:3px 10px;border-radius:100px">[6]</span>
-                                <span style="font-family:'Space Mono',monospace;font-size:0.72rem;color:var(--text-muted)"></span>
+                                <span style="background:rgba(0,201,167,0.1);border:1px solid rgba(0,201,167,0.3);color:var(--primary);font-family:'Space Mono',monospace;font-size:0.7rem;padding:3px 10px;border-radius:100px">[6]
+                                </span>
+                                <span style="font-family:'Space Mono',monospace;font-size:0.72rem;color:var(--text-muted)">
+                                </span>
                             </div>
-                            <h5 style="font-family:'DM Serif Display',serif;font-weight:400;color:var(--text);margin-bottom:0.5rem;font-size:1.1rem">Antennal Movements and Mechanoreception: Neurobiology of Active Tactile Sensors</h5>
-                            <p style="font-size:0.85rem;color:var(--primary);margin-bottom:0.75rem;font-style:italic">Erich M. Staudachera, Michael Gebhardtby,  Volker Du¨rr</p>
-                            <p style="font-size:0.9rem;color:var(--text-muted);line-height:1.7;margin:0">Objective: Understand biological principles behind insect antenna-based tactile sensing and active exploration. Method: Studied antennal biomechanics, mechanoreceptors, active sensing behaviors, and sensorimotor control in insects. Key result: Showed that insect antennae can detect contacts, localize objects, and distinguish external stimuli during active movements. Bio-inspiration: Based on tactile exploration behavior of stick insects, locusts, cockroaches, and other antenna-based insects. Relevance: Provides the biological basis for vibration-based robotic antennae, contact detection, and ego-motion cancellation used in our project.</p>
+                            <h5 style="font-family:'DM Serif Display',serif;font-weight:400;color:var(--text);margin-bottom:0.5rem;font-size:1.1rem">Antennal Movements and Mechanoreception: Neurobiology of Active Tactile Sensors
+                            </h5>
+                            <p style="font-size:0.85rem;color:var(--primary);margin-bottom:0.75rem;font-style:italic">Erich M. Staudachera, Michael Gebhardtby,  Volker Du¨rr
+                            </p>
+                            <p style="font-size:0.9rem;color:var(--text-muted);line-height:1.7;margin:0">This paper explores how insects use antennae and mechanoreceptors for active tactile sensing and object detection. It shows how sensory feedback and antennal movements enable accurate contact localization while reducing the effects of self-motion. The biological principles presented in this work directly inspire the vibration-based robotic antenna and ego-motion cancellation approach used in our project.
+                            </p>
                         </div>
                         <div class="col-lg-3 d-flex align-items-center justify-content-lg-end">
                             <a href="docs/paper-6.pdf" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:var(--dark);border:1px solid var(--primary);color:var(--primary);padding:8px 18px;border-radius:8px;font-size:0.8rem;text-decoration:none;font-family:'Space Mono',monospace;white-space:nowrap;transition:all 0.25s" onmouseover="this.style.background='rgba(0,201,167,0.1)'" onmouseout="this.style.background='var(--dark)'">
