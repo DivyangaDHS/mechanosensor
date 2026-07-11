@@ -20,19 +20,26 @@
 
     <style>
         :root {
-            --primary: #00C9A7;
-            --primary-dark: #009E84;
-            --accent: #7B5EA7;
-            --dark: #0D1117;
-            --dark2: #161B22;
-            --dark3: #21262D;
-            --card-bg: #161B22;
-            --border: rgba(255,255,255,0.08);
-            --text: #E6EDF3;
-            --text-muted: #8B949E;
-            --light: #F0FFF9;
-        }
+    /* Main palette */
+    --primary: #00AEEF;          /* Strong blue */
+    --primary-dark: #008CC0;     /* Darker blue for hover states */
+    --accent: #E20613;           /* Strong red */
+    --accent-light: #E3575F;     /* Softer red */
+    --secondary: #5EC5F0;        /* Light blue */
+    --new1:#000042;
 
+    /* Light theme backgrounds */
+    --dark: #FFFFFF;             /* Main page background */
+    --dark2: #F4FAFD;            /* Alternate section background */
+    --dark3: #EAF7FC;            /* Cards and smaller containers */
+    --card-bg: #FFFFFF;
+
+    /* Borders and text */
+    --border: rgba(0, 174, 239, 0.18);
+    --text: #16202A;
+    --text-muted: #5F6B75;
+    --light: #FFFFFF;
+}
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
@@ -60,7 +67,7 @@
             color: var(--primary) !important;
             letter-spacing: -0.5px;
         }
-        .navbar-brand span { color: var(--text); }
+        .navbar-brand span { color: var(--dark); }
         .nav-link {
             color: var(--text-muted) !important;
             font-size: 0.85rem;
@@ -79,7 +86,7 @@
             min-height: 100vh;
             background: radial-gradient(ellipse at 20% 50%, rgba(0,201,167,0.12) 0%, transparent 60%),
                         radial-gradient(ellipse at 80% 20%, rgba(123,94,167,0.1) 0%, transparent 50%),
-                        var(--dark);
+                        var(--new1);
             display: flex;
             align-items: center;
             position: relative;
@@ -94,6 +101,8 @@
                 linear-gradient(rgba(0,201,167,0.03) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(0,201,167,0.03) 1px, transparent 1px);
             background-size: 50px 50px;
+
+            pointer-events: none;
         }
         .hero-badge {
             display: inline-flex;
@@ -124,13 +133,13 @@
             font-size: clamp(2rem, 5vw, 3.5rem);
             font-weight: 800;
             line-height: 1.15;
-            color: var(--text);
+            color: var(--dark2);
             margin-bottom: 1.5rem;
         }
         .hero h1 span { color: var(--primary); }
         .hero p {
             font-size: 1.1rem;
-            color: var(--text-muted);
+            color: var(--secondary);
             line-height: 1.8;
             max-width: 580px;
             margin-bottom: 2rem;
@@ -199,13 +208,14 @@
             box-shadow: 0 8px 25px rgba(0,201,167,0.3);
         }
         .btn-outline-custom {
-            background: transparent;
-            color: var(--text);
-            border: 1px solid var(--border);
+            background: var(--primary);
+            color: var(--dark);
+            border: none;
             padding: 0.75rem 2rem;
-            font-weight: 600;
+            font-weight: 700;
             border-radius: 8px;
             font-size: 0.9rem;
+            letter-spacing: 0.03em;
             transition: all 0.3s;
             text-decoration: none;
             display: inline-flex;
@@ -213,10 +223,216 @@
             gap: 8px;
         }
         .btn-outline-custom:hover {
-            border-color: var(--primary);
-            color: var(--primary);
-            background: rgba(0,201,167,0.05);
+            background: var(--primary-dark);
+            color: var(--dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,201,167,0.3);
         }
+
+        /* ===== WEEKLY PROGRESS SUMMARY ===== */
+
+.progress-summary-section {
+    background: var(--dark);
+}
+
+.week-grid {
+    display: grid;
+    grid-template-rows: repeat(7, auto);
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(0, 1fr);
+    gap: 1rem 1.25rem;
+}
+
+.week-tile {
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--text-muted);
+    border-radius: 0 12px 12px 0;
+    padding: 1.25rem 1.5rem;
+    transition: all 0.25s ease;
+}
+
+.week-tile:hover {
+    transform: translateY(-3px);
+    border-color: rgba(0, 174, 239, 0.35);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* Completed week */
+.week-tile.completed {
+    border-left-color: #3E9164;
+}
+
+/* Current week */
+.week-tile.current {
+    border-left-color: var(--primary);
+}
+
+/* Upcoming week */
+.week-tile.upcoming {
+    border-left-color: #A7B0B8;
+}
+
+.week-tile-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.55rem;
+}
+
+.week-title-wrap {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    min-width: 0;
+}
+
+.week-status-dot {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.completed .week-status-dot {
+    background: #3E9164;
+}
+
+.current .week-status-dot {
+    background: var(--primary);
+    box-shadow: 0 0 0 5px rgba(0, 174, 239, 0.12);
+    animation: pulse 2s infinite;
+}
+
+.upcoming .week-status-dot {
+    background: #A7B0B8;
+}
+
+.week-tile h4 {
+    color: var(--text);
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.4;
+    margin: 0;
+}
+
+.week-tile h4 span {
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.week-summary {
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    line-height: 1.55;
+    margin: 0;
+}
+
+.week-status {
+    flex-shrink: 0;
+    padding: 0.25rem 0.75rem;
+    border-radius: 100px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.status-completed {
+    background: #3E9164;
+    color: #FFFFFF;
+}
+
+.status-current {
+    background: var(--primary);
+    color: #FFFFFF;
+}
+
+.status-upcoming {
+    background: rgba(167, 176, 184, 0.18);
+    color: var(--text-muted);
+    border: 1px solid rgba(167, 176, 184, 0.35);
+}
+
+.progress-overview-box {
+    background: var(--dark3);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.progress-overview-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.9rem;
+}
+
+.progress-overview-header h4 {
+    color: var(--text);
+    font-size: 1rem;
+    margin: 0;
+}
+
+.progress-percent {
+    color: var(--primary);
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+}
+
+.progress-overview-track {
+    height: 9px;
+    background: var(--dark);
+    border-radius: 100px;
+    overflow: hidden;
+}
+
+.progress-overview-fill {
+    height: 100%;
+    width: 64%;
+    border-radius: 100px;
+    background: linear-gradient(
+        90deg,
+        var(--primary),
+        var(--secondary, #5EC5F0)
+    );
+}
+
+.progress-current-text {
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    margin-top: 0.8rem;
+    margin-bottom: 0;
+}
+
+.progress-page-button {
+    display: flex;
+    justify-content: center;
+    margin-top: 2.5rem;
+}
+
+@media (max-width: 991px) {
+    .week-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 576px) {
+    .week-tile {
+        padding: 1rem;
+    }
+
+    .week-tile-header {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .week-status {
+        margin-left: 2rem;
+    }
+}
 
         /* ===== SECTION STYLES ===== */
         section { padding: 5rem 0; }
@@ -648,16 +864,20 @@
                         Vibration-Based<br>
                         Mechanosensors
                     </h1>
-                    <p>
-                        A bio-inspired tactile sensing system integrating <span class="code-accent">Echo State Networks</span> 
-                        for self-sensing cancellation in robotic navigation across low-visibility, unstructured environments.
+                    <p> 
+                        Inspired by the remarkable sensing ability of insect antennaes, this project develops 
+                        a vibration-based robotic antenna for autonomous mobile robots. By combining tactile 
+                        sensing with a bio-inspired ego-motion cancellation algorithm, the system separates 
+                        true environmental contacts from self-induced vibrations, enabling reliable perception 
+                        in low-visibility and unstructured environments.
+                        
                     </p>
                     <div class="d-flex gap-3 flex-wrap">
                         <a href="#schedule" class="btn-primary-custom">
                             <i class="fas fa-calendar-alt"></i> View Progress
                         </a>
                         <a href="#overview" class="btn-outline-custom">
-                            <i class="fas fa-book-open"></i> Read More
+                            <i class="fas fa-book-open"></i> Overview
                         </a>
                     </div>
                     <div class="hero-stats">
@@ -668,10 +888,6 @@
                         <div class="hero-stat-item">
                             <div class="number">3</div>
                             <div class="label">Team Members</div>
-                        </div>
-                        <div class="hero-stat-item">
-                            <div class="number">ESN</div>
-                            <div class="label">Core Algorithm</div>
                         </div>
                     </div>
                 </div>
@@ -684,16 +900,16 @@
                         <div class="separator"></div>
                         <div class="row g-3 text-center">
                             <div class="col-4">
-                                <div style="font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--text-muted)">INPUT</div>
-                                <div style="font-size:0.85rem;color:var(--text);font-weight:600;margin-top:4px">Vibration<br>Signal</div>
+                                <div style="font-size:0.85rem;color:var(--primary);font-weight:600;margin-top:4px">Bio-Inspired Sensing</div>
+                                <div style="font-size:0.85rem;color:var(--text);font-weight:600;margin-top:4px"><br>Artificial Robotic Antenna</div>
                             </div>
                             <div class="col-4">
-                                <div style="font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--text-muted)">PROCESS</div>
-                                <div style="font-size:0.85rem;color:var(--primary);font-weight:600;margin-top:4px">ESN<br>Filter</div>
+                                <div style="font-size:0.85rem;color:var(--text);font-weight:600;margin-top:4px">Sensor Calibration</div>
+                                <div style="font-size:0.85rem;color:var(--primary);font-weight:600;margin-top:4px"><br>Ego-Motion Cancellation</div>
                             </div>
                             <div class="col-4">
-                                <div style="font-family:'Space Mono',monospace;font-size:0.7rem;color:var(--text-muted)">OUTPUT</div>
-                                <div style="font-size:0.85rem;color:var(--text);font-weight:600;margin-top:4px">3D<br>Localization</div>
+                                <div style="font-size:0.85rem;color:var(--primary);font-weight:600;margin-top:4px">Echo State Networks</div>
+                                <div style="font-size:0.85rem;color:var(--text);font-weight:600;margin-top:4px"><br>Real-Time Contact Detection</div>
                             </div>
                         </div>
                     </div>
@@ -746,528 +962,398 @@
                         <p>Robust spatial mapping framework for unstructured environments including disaster zones and underwater habitats.</p>
                     </div>
                 </div>
-            </div>
-
-            <!-- Applications row -->
-            <div class="row g-4">
-                <div class="col-12">
-                    <div style="background:var(--dark3);border:1px solid var(--border);border-radius:16px;padding:2rem;">
-                        <div class="row g-4 align-items-center">
-                            <div class="col-lg-4">
-                                <div class="section-label">// APPLICATIONS</div>
-                                <h3 style="font-family:'Syne',sans-serif;font-weight:800;color:var(--text);margin-bottom:1rem">Where This<br><span style="color:var(--primary)">Technology Works</span></h3>
-                                <p style="color:var(--text-muted);font-size:0.9rem;line-height:1.7">Designed for environments where visual sensing fails and tactile feedback becomes critical for navigation.</p>
-                            </div>
-                            <div class="col-lg-8">
-                                <div class="row g-3">
-                                    <div class="col-sm-6 col-lg-3">
-                                        <div style="text-align:center;padding:1.5rem;background:var(--dark);border:1px solid var(--border);border-radius:12px;">
-                                            <div style="font-size:2rem;margin-bottom:0.75rem">🏚️</div>
-                                            <div style="font-size:0.85rem;color:var(--text);font-weight:600">Disaster Zones</div>
-                                            <div style="font-size:0.78rem;color:var(--text-muted);margin-top:4px">Low visibility search & rescue</div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6 col-lg-3">
-                                        <div style="text-align:center;padding:1.5rem;background:var(--dark);border:1px solid var(--border);border-radius:12px;">
-                                            <div style="font-size:2rem;margin-bottom:0.75rem">🌊</div>
-                                            <div style="font-size:0.85rem;color:var(--text);font-weight:600">Underwater</div>
-                                            <div style="font-size:0.78rem;color:var(--text-muted);margin-top:4px">Turbid aquatic environments</div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6 col-lg-3">
-                                        <div style="text-align:center;padding:1.5rem;background:var(--dark);border:1px solid var(--border);border-radius:12px;">
-                                            <div style="font-size:2rem;margin-bottom:0.75rem">🌌</div>
-                                            <div style="font-size:0.85rem;color:var(--text);font-weight:600">Extraterrestrial</div>
-                                            <div style="font-size:0.78rem;color:var(--text-muted);margin-top:4px">Space exploration probes</div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6 col-lg-3">
-                                        <div style="text-align:center;padding:1.5rem;background:var(--dark);border:1px solid var(--border);border-radius:12px;">
-                                            <div style="font-size:2rem;margin-bottom:0.75rem">🏭</div>
-                                            <div style="font-size:0.85rem;color:var(--text);font-weight:600">Industrial</div>
-                                            <div style="font-size:0.78rem;color:var(--text-muted);margin-top:4px">Cluttered factory floors</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="d-flex justify-content-start">
+                <a href="project-overview.html" class="btn-primary-custom"> <i class="fas fa-book-open"></i> Read More</a>
                 </div>
             </div>
-        </div>
+
+            
     </section>
 
     <!-- Schedule -->
-    <section class="schedule-section" id="schedule">
-        <div class="container">
-            <div class="row mb-5">
-                <div class="col-lg-6">
-                    <div class="section-label">// 14-WEEK ROADMAP</div>
-                    <h2 class="section-title">Project <span>Schedule</span><br>& Progress Updates</h2>
-                </div>
-                <div class="col-lg-6 d-flex align-items-end">
-                    <p style="color:var(--text-muted);font-size:0.95rem;line-height:1.8;margin:0">
-                        Click any week button below to view objectives, deliverables, and progress updates for that phase.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Week Tabs -->
-            <div class="schedule-tabs">
-                <button class="schedule-tab active" onclick="showPanel('w12')">W1–2</button>
-                <button class="schedule-tab" onclick="showPanel('w3')">W3</button>
-                <button class="schedule-tab" onclick="showPanel('w45')">W4–5</button>
-                <button class="schedule-tab" onclick="showPanel('w69')">W6–9</button>
-                <button class="schedule-tab" onclick="showPanel('w79')">W7–9 ★</button>
-                <button class="schedule-tab" onclick="showPanel('w1011')">W10–11</button>
-                <button class="schedule-tab" onclick="showPanel('w1112')">W11–12</button>
-                <button class="schedule-tab" onclick="showPanel('w1314')">W13–14</button>
-            </div>
-
-            <!-- Panels -->
-            <div id="w12" class="schedule-panel active">
-                <div class="panel-card">
-                    <div class="panel-header">
-                        <span class="panel-week-badge">WEEK 1–2</span>
-                        <h3>Literature Review</h3>
-                        <div class="panel-status"><span class="status-dot done"></span> Completed</div>
-                    </div>
-                    <div class="panel-body">
-                        <div class="row g-4">
-                            <div class="col-lg-8">
-                                <p style="color:var(--text-muted);margin-bottom:1.2rem;font-size:0.95rem">
-                                Studied vibration-based tactile sensing, Echo State Networks (ESN),
-                                bio-inspired antenna systems, and ego-motion cancellation techniques.
-                                </p>
-
-                                <ul class="objective-list">
-                                    <li><span class="check"><i class="fas fa-check-circle"></i></span>
-                                    Literature survey completed
-                                    </li>
-
-                                    <li><span class="check"><i class="fas fa-check-circle"></i></span>
-                                    ESN-based approaches reviewed
-                                   </li>
-
-                                   <li><span class="check"><i class="fas fa-check-circle"></i></span>
-                                    Research gap identified
-                                    </li>
-                                </ul>
-                                <div class="update-box">
-                                    <div class="update-label">📌 Week 2 Completed</div>
-                                    <p>Literature review completed. Key papers identified on ESN reservoir computing and bionic whisker designs.</p>
-                                    <div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1rem">
-                                        <a href="week-1-2.html" class="btn-primary-custom">
-                                            <i class="fas fa-arrow-right"></i> View Full Outcome
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="deliverables-grid" style="grid-template-columns:1fr 1fr">
-                                    <div class="deliverable-item">
-                                        <div class="di-icon">📄</div>
-                                        <div class="di-title">Literature Summary</div>
-                                    </div>
-                                    <div class="deliverable-item">
-                                        <div class="di-icon">📚</div>
-                                        <div class="di-title">Bibliography</div>
-                                    </div>
-                                    <div class="deliverable-item">
-                                        <div class="di-icon">🔍</div>
-                                        <div class="di-title">Gap Analysis</div>
-                                    </div>
-                                    <div class="deliverable-item">
-                                        <div class="di-icon">🎯</div>
-                                        <div class="di-title">Project Scope</div>
-                                    </div>
-                                </div>
-                                <div class="progress-bar-container mt-3">
-                                    <div class="progress-fill" style="width:100%"></div>
-                                </div>
-                                <div class="progress-label"><span>Progress</span><span>100%</span></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            <div id="w3" class="schedule-panel">
-                <div class="panel-card">
-                    <div class="panel-header">
-                        <span class="panel-week-badge">WEEK 3</span>
-                        <h3>Component Research & Acquisition</h3>
-                        <div class="panel-status"><span class="status-dot done"></span> Completed</div>
-                    </div>
-                    <div class="panel-body">
-                        <div class="row g-4">
-                            <div class="col-lg-8">
-                                <p style="color:var(--text-muted);margin-bottom:1.2rem;font-size:0.95rem;line-height:1.8;">
-                                   Evaluated and selected the hardware components required for the project,
-                                   including sensors, actuators, processing units, power systems, and
-                                   mechanical structures. A complete component selection report was prepared.
-                                </p>
-
-                                <ul class="objective-list">
-                                   <li><span class="check"><i class="fas fa-check-circle"></i></span>
-                                    Hardware components evaluated
-                                    </li>
-
-                                    <li><span class="check"><i class="fas fa-check-circle"></i></span>
-                                       Final component list selected
-                                    </li>
-
-                                    <li><span class="check"><i class="fas fa-check-circle"></i></span>
-                                        Technical comparison completed
-                                    </li>
-                                </ul>
-                                <div class="update-box">
-                                    <div class="update-label">📌 Week 3 Completed</div>
-                                    <p>Full List of Components and there specs with comparisons.</p>
-                                    <div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1rem">
-                                        <a href="week-3.html" class="btn-primary-custom">
-                                            <i class="fas fa-arrow-right"></i>  View Full Outcome
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="deliverables-grid" style="grid-template-columns:1fr 1fr">
-                                    <div class="deliverable-item"><div class="di-icon">🛒</div><div class="di-title">Parts List</div></div>
-                                    <div class="deliverable-item"><div class="di-icon">📋</div><div class="di-title">Spec Sheets</div></div>
-                                    <div class="deliverable-item"><div class="di-icon">📦</div><div class="di-title">Components</div></div>
-                                    <div class="deliverable-item"><div class="di-icon">💰</div><div class="di-title">Budget Log</div></div>
-                                </div>
-                                <div class="progress-bar-container mt-3">
-                                    <div class="progress-fill" style="width:100%"></div>
-                                </div>
-                                <div class="progress-label"><span>Progress</span><span>100%</span></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="w45" class="schedule-panel">
-                <div class="panel-card">
-                    <div class="panel-header">
-                        <span class="panel-week-badge">WEEK 4–5</span>
-                        <h3>Hardware Design & Schematic Drafting</h3>
-                        <div class="panel-status"><span class="status-dot done"></span> Completed</div>
-                    </div>
-                    <div class="panel-body">
-                        <div class="row g-4">
-                            <div class="col-lg-8">
-                               <p style="color:var(--text-muted);margin-bottom:1.2rem;font-size:0.95rem;line-height:1.8;">
-                                Developed the complete system architecture, circuit schematic, and
-                                mechanical design concepts. Sensor placement, wiring, and component
-                                integration strategies were finalized for hardware implementation.
-                                </p>
-
-                                    <ul class="objective-list">
-                                    <li><span class="check"><i class="fas fa-check-circle"></i></span>
-                                            System architecture designed
-                                    </li>
-
-                                    <li><span class="check"><i class="fas fa-check-circle"></i></span>
-                                                Circuit schematic completed
-                                    </li>
-
-                                     <li><span class="check"><i class="fas fa-check-circle"></i></span>
-                                            Mechanical designs prepared
-                                     </li>
-                                    </ul>
-
-                                <div class="update-box">
-                                    <div class="update-label">📌 Latest Update</div>
-                                    <p>Ongoing — Component Design. Circuit diagram drafted showing full system connections.</p>
-                                    <div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1rem">
-                                        <a href="week-4-5.html" class="btn-primary-custom">
-                                            <i class="fas fa-arrow-right"></i> View Full Outcome
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="deliverables-grid" style="grid-template-columns:1fr 1fr">
-                                    <div class="deliverable-item"><div class="di-icon">📐</div><div class="di-title">Schematics</div></div>
-                                    <div class="deliverable-item"><div class="di-icon">🖥️</div><div class="di-title">CAD Files</div></div>
-                                    <div class="deliverable-item"><div class="di-icon">📊</div><div class="di-title">PCB Layout</div></div>
-                                    <div class="deliverable-item"><div class="di-icon">✅</div><div class="di-title">Design Review</div></div>
-                                </div>
-                                <div class="progress-bar-container mt-3">
-                                    <div class="progress-fill" style="width:100%"></div>
-                                </div>
-                                <div class="progress-label"><span>Progress</span><span>100%</span></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="w69" class="schedule-panel">
-                <div class="panel-card">
-                    <div class="panel-header">
-                        <span class="panel-week-badge">WEEK 6–9</span>
-                        <h3>Coding & Logic Framework Development</h3>
-                        <div class="panel-status"><span class="status-dot pending"></span> Upcoming</div>
-                    </div>
-                    <div class="panel-body">
-                        <div class="row g-4">
-                            <div class="col-lg-8">
-                                <p style="color:var(--text-muted);margin-bottom:1.2rem;font-size:0.95rem">Develop the core software framework including ESN implementation, signal processing pipeline, and the ego-motion cancellation algorithm in Python and C++.</p>
-                                <!--
-                                <ul class="objective-list">
-                                    <li><span class="check"><i class="fas fa-circle" style="font-size:0.5rem;color:var(--text-muted)"></i></span> Implement Echo State Network reservoir architecture</li>
-                                    <li><span class="check"><i class="fas fa-circle" style="font-size:0.5rem;color:var(--text-muted)"></i></span> Develop signal preprocessing and feature extraction pipeline</li>
-                                    <li><span class="check"><i class="fas fa-circle" style="font-size:0.5rem;color:var(--text-muted)"></i></span> Code ego-motion estimation and cancellation module</li>
-                                    
-                                    <!-- Accelerometer check -->
-                                
-                                    <li style="flex-direction:column;align-items:flex-start;gap:0.75rem;padding:1rem 0;">
-                                        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px;width:100%;flex-wrap:wrap;">
-                                            <div style="display:flex;align-items:flex-start;gap:10px;">
-                                                <span class="check"><i class="fas fa-circle" style="font-size:0.5rem;color:var(--text-muted)"></i></span>
-                                                <span>Verify accelerometer (MPU6050) connectivity and data output</span>
-                                            </div>
-                                            <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
-                                                <a href="img/accelometer.jpeg" target="_blank" style="display:inline-flex;align-items:center;gap:6px;background:var(--dark3);border:1px solid var(--border);color:var(--text-muted);padding:4px 12px;border-radius:6px;font-size:0.75rem;font-family:'Space Mono',monospace;transition:all 0.25s;text-decoration:none;" onmouseover="this.style.borderColor='var(--primary)';this.style.color='var(--primary)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--text-muted)'">
-                                                    <i class="fas fa-image"></i> Photo
-                                                </a>
-                                                <a href="code/sensor_check.ino" download style="display:inline-flex;align-items:center;gap:6px;background:var(--dark3);border:1px solid var(--border);color:var(--text-muted);padding:4px 12px;border-radius:6px;font-size:0.75rem;font-family:'Space Mono',monospace;transition:all 0.25s;text-decoration:none;" onmouseover="this.style.borderColor='var(--primary)';this.style.color='var(--primary)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--text-muted)'">
-                                                    <i class="fas fa-download"></i> Code
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </li>
-
-                                    <!-- Platform check -->
-                                
-                                    <li style="flex-direction:column;align-items:flex-start;gap:0.75rem;padding:1rem 0;">
-                                        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px;width:100%;flex-wrap:wrap;">
-                                            <div style="display:flex;align-items:flex-start;gap:10px;">
-                                                <span class="check"><i class="fas fa-circle" style="font-size:0.5rem;color:var(--text-muted)"></i></span>
-                                                <span>Verify omni-directional wheel platform movement and PID control</span>
-                                            </div>
-                                            <a href="code/platform_check.ino" download style="display:inline-flex;align-items:center;gap:6px;background:var(--dark3);border:1px solid var(--border);color:var(--text-muted);padding:4px 12px;border-radius:6px;font-size:0.75rem;font-family:'Space Mono',monospace;transition:all 0.25s;text-decoration:none;" onmouseover="this.style.borderColor='var(--primary)';this.style.color='var(--primary)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--text-muted)'">
-                                                <i class="fas fa-download"></i> Code
-                                            </a>
-                                        </div>
-                                    </li>
-<!--
-                                    <li><span class="check"><i class="fas fa-circle" style="font-size:0.5rem;color:var(--text-muted)"></i></span> Build firmware for microcontroller sensor data acquisition</li>
-                                    <li><span class="check"><i class="fas fa-circle" style="font-size:0.5rem;color:var(--text-muted)"></i></span> Unit testing of individual software components</li>
-                                </ul> -->
-                                <div class="update-box">
-                                    <div class="update-label">📌 Latest Update</div>
-                                    <p>Update will be posted here after Week 9 completion.</p>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="deliverables-grid" style="grid-template-columns:1fr 1fr">
-                                    <div class="deliverable-item"><div class="di-icon">🧠</div><div class="di-title">ESN Module</div></div>
-                                    <div class="deliverable-item"><div class="di-icon">⚙️</div><div class="di-title">Firmware</div></div>
-                                    <div class="deliverable-item"><div class="di-icon">🔬</div><div class="di-title">Pipeline</div></div>
-                                    <div class="deliverable-item"><div class="di-icon">🧪</div><div class="di-title">Unit Tests</div></div>
-                                </div>
-                                <div class="progress-bar-container mt-3">
-                                    <div class="progress-fill" style="width:0%"></div>
-                                </div>
-                                <div class="progress-label"><span>Progress</span><span>0%</span></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="w79" class="schedule-panel">
-                <div class="panel-card">
-                    <div class="panel-header">
-                        <span class="panel-week-badge">WEEK 7–9</span>
-                        <h3>Hardware Assembly & Integration</h3>
-                        <div class="panel-status"><span class="status-dot pending"></span> Upcoming</div>
-                    </div>
-                    <div class="panel-body">
-                        <div class="row g-4">
-                            <div class="col-lg-8">
-                                <p style="color:var(--text-muted);margin-bottom:1.2rem;font-size:0.95rem">Physical assembly of the bionic antenna prototype, soldering, mounting, and initial hardware-software integration testing running in parallel with coding development.</p>
-                                <!--
-                                <ul class="objective-list">
-                                    <li><span class="check"><i class="fas fa-circle" style="font-size:0.5rem;color:var(--text-muted)"></i></span> 3D print or fabricate antenna structural components</li>
-                                    <li><span class="check"><i class="fas fa-circle" style="font-size:0.5rem;color:var(--text-muted)"></i></span> Solder sensor array and signal conditioning circuits</li>
-                                    <li><span class="check"><i class="fas fa-circle" style="font-size:0.5rem;color:var(--text-muted)"></i></span> Mount and wire microcontroller with sensors</li>
-                                    <li><span class="check"><i class="fas fa-circle" style="font-size:0.5rem;color:var(--text-muted)"></i></span> Initial integration tests with firmware</li>
-                                    <li><span class="check"><i class="fas fa-circle" style="font-size:0.5rem;color:var(--text-muted)"></i></span> Debug hardware-software interface issues</li>
-                                </ul> -->
-                                <div class="update-box">
-                                    <div class="update-label">📌 Latest Update</div>
-                                    <p>Update will be posted here after Week 9 completion.</p>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="deliverables-grid" style="grid-template-columns:1fr 1fr">
-                                    <div class="deliverable-item"><div class="di-icon">🔧</div><div class="di-title">Prototype v1</div></div>
-                                    <div class="deliverable-item"><div class="di-icon">📸</div><div class="di-title">Build Photos</div></div>
-                                    <div class="deliverable-item"><div class="di-icon">🔌</div><div class="di-title">Wiring Doc</div></div>
-                                    <div class="deliverable-item"><div class="di-icon">📝</div><div class="di-title">Test Log</div></div>
-                                </div>
-                                <div class="progress-bar-container mt-3">
-                                    <div class="progress-fill" style="width:0%"></div>
-                                </div>
-                                <div class="progress-label"><span>Progress</span><span>0%</span></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="w1011" class="schedule-panel">
-                <div class="panel-card">
-                    <div class="panel-header">
-                        <span class="panel-week-badge">WEEK 10–11</span>
-                        <h3>Hardware Calibration</h3>
-                        <div class="panel-status"><span class="status-dot pending"></span> Upcoming</div>
-                    </div>
-                    <div class="panel-body">
-                        <div class="row g-4">
-                            <div class="col-lg-8">
-                                <p style="color:var(--text-muted);margin-bottom:1.2rem;font-size:0.95rem">Systematic calibration of sensor array, tuning signal thresholds, and validating the noise floor characteristics across different robot motion conditions.</p>
-                                <!--
-                                <ul class="objective-list">
-                                    <li><span class="check"><i class="fas fa-circle" style="font-size:0.5rem;color:var(--text-muted)"></i></span> Characterise sensor frequency response and sensitivity</li>
-                                    <li><span class="check"><i class="fas fa-circle" style="font-size:0.5rem;color:var(--text-muted)"></i></span> Calibrate ego-motion signature at various speeds</li>
-                                    <li><span class="check"><i class="fas fa-circle" style="font-size:0.5rem;color:var(--text-muted)"></i></span> Establish baseline noise floor measurements</li>
-                                    <li><span class="check"><i class="fas fa-circle" style="font-size:0.5rem;color:var(--text-muted)"></i></span> Fine-tune analog signal conditioning parameters</li>
-                                    <li><span class="check"><i class="fas fa-circle" style="font-size:0.5rem;color:var(--text-muted)"></i></span> Document calibration curves and parameters</li>
-                                </ul> -->
-                                <div class="update-box">
-                                    <div class="update-label">📌 Latest Update</div>
-                                    <p>Update will be posted here after Week 11 completion.</p>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="deliverables-grid" style="grid-template-columns:1fr 1fr">
-                                    <div class="deliverable-item"><div class="di-icon">📈</div><div class="di-title">Calib. Curves</div></div>
-                                    <div class="deliverable-item"><div class="di-icon">🎛️</div><div class="di-title">Parameters</div></div>
-                                    <div class="deliverable-item"><div class="di-icon">📊</div><div class="di-title">Noise Data</div></div>
-                                    <div class="deliverable-item"><div class="di-icon">📝</div><div class="di-title">Calib. Report</div></div>
-                                </div>
-                                <div class="progress-bar-container mt-3">
-                                    <div class="progress-fill" style="width:0%"></div>
-                                </div>
-                                <div class="progress-label"><span>Progress</span><span>0%</span></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="w1112" class="schedule-panel">
-                <div class="panel-card">
-                    <div class="panel-header">
-                        <span class="panel-week-badge">WEEK 11–12</span>
-                        <h3>Offline Data Testing & Model Training</h3>
-                        <div class="panel-status"><span class="status-dot pending"></span> Upcoming</div>
-                    </div>
-                    <div class="panel-body">
-                        <div class="row g-4">
-                            <div class="col-lg-8">
-                                <p style="color:var(--text-muted);margin-bottom:1.2rem;font-size:0.95rem">Collect experimental datasets, train and validate the ESN model offline, and benchmark cancellation performance against baseline approaches.</p>
-                                
-                                <!--<ul class="objective-list">
-                                    <li><span class="check"><i class="fas fa-circle" style="font-size:0.5rem;color:var(--text-muted)"></i></span> Record labelled contact/no-contact vibration datasets</li>
-                                    <li><span class="check"><i class="fas fa-circle" style="font-size:0.5rem;color:var(--text-muted)"></i></span> Train ESN reservoir with collected data</li>
-                                    <li><span class="check"><i class="fas fa-circle" style="font-size:0.5rem;color:var(--text-muted)"></i></span> Cross-validate model performance with held-out test sets</li>
-                                    <li><span class="check"><i class="fas fa-circle" style="font-size:0.5rem;color:var(--text-muted)"></i></span> Compare against baseline (Kalman filter, etc.)</li>
-                                    <li><span class="check"><i class="fas fa-circle" style="font-size:0.5rem;color:var(--text-muted)"></i></span> Optimise ESN hyperparameters (spectral radius, sparsity)</li>
-                                </ul> -->
-                                <div class="update-box">
-                                    <div class="update-label">📌 Latest Update</div>
-                                    <p>Update will be posted here after Week 12 completion.</p>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="deliverables-grid" style="grid-template-columns:1fr 1fr">
-                                    <div class="deliverable-item"><div class="di-icon">🗃️</div><div class="di-title">Dataset</div></div>
-                                    <div class="deliverable-item"><div class="di-icon">🤖</div><div class="di-title">Trained Model</div></div>
-                                    <div class="deliverable-item"><div class="di-icon">📉</div><div class="di-title">Benchmarks</div></div>
-                                    <div class="deliverable-item"><div class="di-icon">📓</div><div class="di-title">Notebooks</div></div>
-                                </div>
-                                <div class="progress-bar-container mt-3">
-                                    <div class="progress-fill" style="width:0%"></div>
-                                </div>
-                                <div class="progress-label"><span>Progress</span><span>0%</span></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="w1314" class="schedule-panel">
-                <div class="panel-card">
-                    <div class="panel-header">
-                        <span class="panel-week-badge">WEEK 13–14</span>
-                        <h3>Performance Evaluation & Refinement</h3>
-                        <div class="panel-status"><span class="status-dot pending"></span> Upcoming</div>
-                    </div>
-                    <div class="panel-body">
-                        <div class="row g-4">
-                            <div class="col-lg-8">
-                                <p style="color:var(--text-muted);margin-bottom:1.2rem;font-size:0.95rem">Final evaluation of the complete system under real-world conditions, iterative refinement, and preparation of all project deliverables including the final report and demonstration.</p>
-                               <!-- <ul class="objective-list">
-                                    <li><span class="check"><i class="fas fa-circle" style="font-size:0.5rem;color:var(--text-muted)"></i></span> Conduct full-system real-environment testing trials</li>
-                                    <li><span class="check"><i class="fas fa-circle" style="font-size:0.5rem;color:var(--text-muted)"></i></span> Quantify SNR improvement with ESN cancellation</li>
-                                    <li><span class="check"><i class="fas fa-circle" style="font-size:0.5rem;color:var(--text-muted)"></i></span> Address identified failure modes and edge cases</li>
-                                    <li><span class="check"><i class="fas fa-circle" style="font-size:0.5rem;color:var(--text-muted)"></i></span> Write final technical report and documentation</li>
-                                    <li><span class="check"><i class="fas fa-circle" style="font-size:0.5rem;color:var(--text-muted)"></i></span> Prepare demonstration video and poster presentation</li>
-                                </ul>-->
-                                <div class="update-box">
-                                    <div class="update-label">📌 Final Deliverable</div>
-                                    <p>Complete project report, demo video, and open-source code release scheduled here.</p>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="deliverables-grid" style="grid-template-columns:1fr 1fr">
-                                    <div class="deliverable-item"><div class="di-icon">📑</div><div class="di-title">Final Report</div></div>
-                                    <div class="deliverable-item"><div class="di-icon">🎬</div><div class="di-title">Demo Video</div></div>
-                                    <div class="deliverable-item"><div class="di-icon">🖼️</div><div class="di-title">Poster</div></div>
-                                    <div class="deliverable-item"><div class="di-icon">💻</div><div class="di-title">Source Code</div></div>
-                                </div>
-                                <div class="progress-bar-container mt-3">
-                                    <div class="progress-fill" style="width:0%"></div>
-                                </div>
-                                <div class="progress-label"><span>Progress</span><span>0%</span></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Research Papers -->
-<!-- Research Papers Preview -->
-<section id="papers" style="background:var(--dark2);">
+    <section class="progress-summary-section" id="schedule">
     <div class="container">
-        <div class="row align-items-center g-4">
-            <div class="col-lg-8">
-                <div class="section-label">// REFERENCES</div>
-                <h2 class="section-title">Research <span>Papers</span></h2>
-                <p style="color:var(--text-muted);font-size:0.95rem;line-height:1.8;margin-top:1rem;">
-                    This section contains the key research papers used to understand vibration-based tactile sensing,
-                    ego-motion cancellation, Echo State Networks, and bio-inspired robotic antenna systems.
+
+        <div class="row mb-5">
+            <div class="col-lg-7">
+                <div class="section-label">// PROJECT PROGRESS</div>
+
+                <h2 class="section-title">
+                    Weekly <span>Development</span><br>
+                    Progress
+                </h2>
+            </div>
+
+            <div class="col-lg-5 d-flex align-items-end">
+                <p style="
+                    color:var(--text-muted);
+                    font-size:0.95rem;
+                    line-height:1.8;
+                    margin:0;
+                ">
+                    A concise summary of the work completed during each
+                    project week. Detailed results, photographs and technical
+                    outcomes are available on the full progress page.
                 </p>
             </div>
-
-            <div class="col-lg-4 text-lg-end">
-                <a href="research.html" class="btn-primary-custom">
-                    <i class="fas fa-book-open"></i> View Research Papers
-                </a>
-            </div>
         </div>
+
+        <!-- Overall progress -->
+        <div class="progress-overview-box">
+            <div class="progress-overview-header">
+                <h4>Overall Project Progress</h4>
+                <span class="progress-percent">64%</span>
+            </div>
+
+            <div class="progress-overview-track">
+                <div class="progress-overview-fill"></div>
+            </div>
+
+            <p class="progress-current-text">
+                Current phase: Sensor calibration, signal acquisition and
+                preparation for ESN model development.
+            </p>
+        </div>
+
+        <!-- Weekly tiles -->
+        <div class="week-grid">
+
+            <!-- Week 1 -->
+            <a href="progress.html#week1">
+            <article class="week-tile completed">
+                <div class="week-tile-header">
+                    <div class="week-title-wrap">
+                        <span class="week-status-dot"></span>
+
+                        <h4>
+                            Week 1
+                            <span>— Literature Review</span>
+                        </h4>
+                    </div>
+
+                    <span class="week-status status-completed">
+                        Completed
+                    </span>
+                </div>
+
+                <p class="week-summary">
+                    Background research about the project and identification of existing research papers about the project.
+                </p>
+            </article></a>
+
+            <!-- Week 2 -->
+            <a href="progress.html#week2">
+            <article class="week-tile completed">
+                <div class="week-tile-header">
+                    <div class="week-title-wrap">
+                        <span class="week-status-dot"></span>
+
+                        <h4>
+                            Week 2
+                            <span>— Literature Review</span>
+                        </h4>
+                    </div>
+
+                    <span class="week-status status-completed">
+                        Completed
+                    </span>
+                </div>
+
+                <p class="week-summary">
+                    Reviewed the research papers and gathered information and background knowladge about the project.
+                </p>
+            </article></a>
+
+            <!-- Week 3 -->
+            <a href="progress.html#week3">
+            <article class="week-tile completed">
+                <div class="week-tile-header">
+                    <div class="week-title-wrap">
+                        <span class="week-status-dot"></span>
+
+                        <h4>
+                            Week 3
+                            <span>— Component Research & Acquisition</span>
+                        </h4>
+                    </div>
+
+                    <span class="week-status status-completed">
+                        Completed
+                    </span>
+                </div>
+
+                <p class="week-summary">
+                    Evaluated and selected the sensors, actuators and processing hardware for the prototype.
+                </p>
+            </article></a>
+
+            <!-- Week 4 -->
+            <a href="progress.html#week4">
+            <article class="week-tile completed">
+                <div class="week-tile-header">
+                    <div class="week-title-wrap">
+                        <span class="week-status-dot"></span>
+
+                        <h4>
+                            Week 4
+                            <span>— Hardware Design & Schematic Drafting</span>
+                        </h4>
+                    </div>
+
+                    <span class="week-status status-completed">
+                        Completed
+                    </span>
+                </div>
+
+                <p class="week-summary">
+                    Developed the overall hardware architecture and system integration plan.
+                    Finalize the hardware design and 3D modeled the nessosory parts.
+                </p>
+            </article></a>
+
+            <!-- Week 5 -->
+            <a href="progress.html#week5">
+            <article class="week-tile completed">
+                <div class="week-tile-header">
+                    <div class="week-title-wrap">
+                        <span class="week-status-dot"></span>
+
+                        <h4>
+                            Week 5
+                            <span>— Hardware Design & Schematic Drafting</span>
+                        </h4>
+                    </div>
+
+                    <span class="week-status status-completed">
+                        Completed
+                    </span>
+                </div>
+
+                <p class="week-summary">
+                    Designed the robotic antenna structure, mounting mechanism and electrical interfaces.
+                </p>
+            </article></a>
+
+            <!-- Week 6 -->
+            <a href="progress.html#week6">
+            <article class="week-tile completed">
+                <div class="week-tile-header">
+                    <div class="week-title-wrap">
+                        <span class="week-status-dot"></span>
+
+                        <h4>
+                            Week 6
+                            <span>— Coding & Logic Framework Development</span>
+                        </h4>
+                    </div>
+
+                    <span class="week-status status-completed">
+                        Completed
+                    </span>
+                </div>
+
+                <p class="week-summary">
+                    Established the programming structure needed to synchronize robot movement commands with accelerometer data.
+                </p>
+            </article></a>
+
+            <!-- Week 7 -->
+            <a href="progress.html#week7">
+            <article class="week-tile completed">
+                <div class="week-tile-header">
+                    <div class="week-title-wrap">
+                        <span class="week-status-dot"></span>
+
+                        <h4>
+                            Week 7
+                            <span>— Coding & Logic Framework Development<br> & Hardware Assembly & Integration</span>
+                        </h4>
+                    </div>
+
+                    <span class="week-status status-completed">
+                        Completed
+                    </span>
+                </div>
+
+                <p class="week-summary">
+                    Implemented and tested the mobile platform and pan-tilt motion control system.
+                </p>
+            </article></a>
+
+            <!-- Week 8 -->
+            <a href="progress.html#week8">
+            <article class="week-tile completed">
+                <div class="week-tile-header">
+                    <div class="week-title-wrap">
+                        <span class="week-status-dot"></span>
+
+                        <h4>
+                            Week 8
+                            <span>— Coding & Logic Framework Development<br> & Hardware Assembly & Integrationy</span>
+                        </h4>
+                    </div>
+
+                    <span class="week-status status-completed">
+                        Completed
+                    </span>
+                </div>
+
+                <p class="week-summary">
+                    Fabricated the artificial antenna and integrated the accelerometer at its tip.
+                </p>
+            </article></a>
+
+            <!-- Week 9 -->
+            <a href="progress.html#week9">
+            <article class="week-tile completed">
+                <div class="week-tile-header">
+                    <div class="week-title-wrap">
+                        <span class="week-status-dot"></span>
+
+                        <h4>
+                            Week 9
+                            <span>— Coding & Logic Framework Development<br> & Hardware Assembly & Integration</span>
+                        </h4>
+                    </div>
+
+                    <span class="week-status status-completed">
+                        Completed
+                    </span>
+                </div>
+
+                <p class="week-summary">
+                    Assembled the complete robotic sensing platform and verified system operation.
+                </p>
+            </article></a>
+
+            <!-- Week 10 -->
+            <a href="progress.html#week10">
+            <article class="week-tile current">
+                <div class="week-tile-header">
+                    <div class="week-title-wrap">
+                        <span class="week-status-dot"></span>
+
+                        <h4>
+                            Week 10
+                            <span>— Hardware Calibration</span>
+                        </h4>
+                    </div>
+
+                    <span class="week-status status-current">
+                        In Progress
+                    </span>
+                </div>
+
+                <p class="week-summary">
+                    Characterising sensor response and vibration behaviour for reliable data acquisition.
+                </p>
+            </article></a>
+
+            <!-- Week 11 -->
+            <a href="progress.html#week11">
+            <article class="week-tile upcoming">
+                <div class="week-tile-header">
+                    <div class="week-title-wrap">
+                        <span class="week-status-dot"></span>
+
+                        <h4>
+                            Week 11
+                            <span>— Offline Data Testing & Model Training</span>
+                        </h4>
+                    </div>
+
+                    <span class="week-status status-upcoming">
+                        Upcoming
+                    </span>
+                </div>
+
+                <p class="week-summary">
+                    Recording labelled vibration datasets for contact and ego-motion conditions.
+                </p>
+            </article></a>
+
+            <!-- Week 12 -->
+            <a href="progress.html#week12">
+            <article class="week-tile upcoming">
+                <div class="week-tile-header">
+                    <div class="week-title-wrap">
+                        <span class="week-status-dot"></span>
+
+                        <h4>
+                            Week 12
+                            <span>— Offline Data Testing & Model Training</span>
+                        </h4>
+                    </div>
+
+                    <span class="week-status status-upcoming">
+                        Upcoming
+                    </span>
+                </div>
+
+                <p class="week-summary">
+                    Training the Echo State Network to model and cancel self-induced vibrations.
+                </p>
+            </article></a>
+
+            <!-- Week 13 -->
+            <a href="progress.html#week13">
+            <article class="week-tile upcoming">
+                <div class="week-tile-header">
+                    <div class="week-title-wrap">
+                        <span class="week-status-dot"></span>
+
+                        <h4>
+                            Week 13
+                            <span>— Performance Evaluation & Refinement</span>
+                        </h4>
+                    </div>
+
+                    <span class="week-status status-upcoming">
+                        Upcoming
+                    </span>
+                </div>
+
+                <p class="week-summary">
+                    Assessing contact detection accuracy and ego-motion cancellation performance.
+                </p>
+            </article></a>
+
+            <!-- Week 14 -->
+            <a href="progress.html#week14">
+            <article class="week-tile upcoming">
+                <div class="week-tile-header">
+                    <div class="week-title-wrap">
+                        <span class="week-status-dot"></span>
+
+                        <h4>
+                            Week 14
+                            <span>— Performance Evaluation & Refinement</span>
+                        </h4>
+                    </div>
+
+                    <span class="week-status status-upcoming">
+                        Upcoming
+                    </span>
+                </div>
+
+                <p class="week-summary">
+                    Optimising the complete system and preparing the final demonstration and documentation.
+                </p>
+            </article></a>
+
+        </div>
+
+        <!-- Full progress page button -->
+        <div class="progress-page-button">
+            <a href="progress.html" class="btn-primary-custom">
+                <i class="fas fa-chart-line"></i>
+                View Full Project Progress
+            </a>
+        </div>
+
     </div>
 </section>
+
 
     <!-- Team -->
     <section class="team-section" id="team">
