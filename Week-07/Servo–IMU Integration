@@ -1,0 +1,31 @@
+#include <Wire.h>
+#include <Adafruit_MPU6050.h>
+#include <Adafruit_Sensor.h>
+
+Adafruit_MPU6050 mpu;
+
+void setup() {
+  Serial.begin(115200);
+  Wire.begin();
+
+  if (!mpu.begin()) {
+    Serial.println("MPU not found");
+    while (1);
+  }
+
+  mpu.setAccelerometerRange(MPU6050_RANGE_2_G);
+  mpu.setFilterBandwidth(MPU6050_BAND_21_HZ);
+}
+
+void loop() {
+  sensors_event_t acc, gyro, temp;
+  mpu.getEvent(&acc, &gyro, &temp);
+
+  Serial.print(acc.acceleration.x);
+  Serial.print(",");
+  Serial.print(acc.acceleration.y);
+  Serial.print(",");
+  Serial.println(acc.acceleration.z);
+
+  delay(10);
+}
