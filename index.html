@@ -104,6 +104,24 @@
 
             pointer-events: none;
         }
+
+        .hero-title{
+            opacity:0;
+            transform:translateX(-160px);
+            animation:floatIn 1s ease-out forwards;
+        }
+
+        @keyframes floatIn{
+            from{
+                opacity:0;
+                transform:translatex(-160px);
+            }
+
+            to{
+                opacity:1;
+                transform:translatex(0);
+            }
+        }
         
         .hero-badge {
             display: inline-flex;
@@ -859,13 +877,13 @@
                         <span class="dot"></span>
                         FYP 2026/27 · Robotics & Sensing
                     </div>
-                    <h1>
+                    <h1 class="hero-title">
                         Ego-Motion<br>
                         <span>Cancellation</span> in<br>
                         Vibration-Based<br>
                         Mechanosensors
                     </h1>
-                    <p> 
+                    <pclass="hero-title"> 
                         Inspired by the remarkable sensing ability of insect antennaes, this project develops 
                         a vibration-based robotic antenna for autonomous mobile robots. By combining tactile 
                         sensing with a bio-inspired ego-motion cancellation algorithm, the system separates 
