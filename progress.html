@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Full Project Progress | MECHOSENSE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<style>
+
+/* ==========================================================
+   COLOR PALETTE
+========================================================== */
+
+:root{
+
+    /* Brand Colors */
+    --primary:#00AEEF;
+    --primary-dark:#008CC0;
+    --secondary:#5EC5F0;
+    --accent:#E20613;
+
+    /* Backgrounds */
+    --page-bg:#F7FBFE;
+    --section-bg:#FFFFFF;
+    --card-bg:#F3F9FC;
+    --card-hover:#EAF6FC;
+
+    /* Text */
+    --text:#1F2937;
+    --muted:#64748B;
+
+    /* Borders */
+    --border:rgba(0,174,239,.15);
+
+    /* Status */
+    --success:#38A169;
+    --warning:#F0A500;
+    --upcoming:#94A3B8;
+
+    /* Shadow */
+    --shadow:0 10px 30px rgba(15,23,42,.08);
+
+}
+
+
+/* ==========================================================
+   RESET
+========================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+    scroll-padding-top:150px;
+}
+
+body{
+
+    font-family:'DM Sans',sans-serif;
+    background:var(--page-bg);
+    color:var(--text);
+    line-height:1.7;
+
+}
+
+a{
+    text-decoration:none;
+}
+
+.container{
+
+    width:min(1180px,calc(100% - 32px));
+    margin:auto;
+
+}
+
+
+/* ==========================================================
+   NAVBAR
+========================================================== */
+
+.main-nav{
+
+    position:sticky;
+    top:0;
+    z-index:1000;
+
+    background:rgba(255,255,255,.92);
+    backdrop-filter:blur(20px);
+
+    border-bottom:1px solid var(--border);
+
+}
+
+.main-nav-inner{
+
+    min-height:72px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    gap:20px;
+
+}
+
+.brand{
+
+    font-family:'DM Serif Display',serif;
+    font-size:1.3rem;
+
+    color:var(--primary);
+
+}
+
+.brand span{
+
+    color:var(--text);
+
+}
+
+.actions{
+
+    display:flex;
+    gap:12px;
+
+}
+
+
+/* ==========================================================
+   BUTTONS
+========================================================== */
+
+.btn{
+
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    gap:8px;
+
+    padding:.7rem 1.15rem;
+
+    border-radius:10px;
+
+    font-size:.85rem;
+    font-weight:700;
+
+    transition:.3s;
+
+}
+
+.btn-primary{
+
+    background:var(--primary);
+    color:white;
+
+}
+
+.btn-primary:hover{
+
+    background:var(--primary-dark);
+    transform:translateY(-2px);
+
+}
+
+.btn-outline{
+
+    border:1px solid var(--border);
+    color:var(--text);
+    background:white;
+
+}
+
+.btn-outline:hover{
+
+    color:var(--primary);
+    border-color:var(--primary);
+
+}
+
+
+/* ==========================================================
+   WEEK NAVIGATION
+========================================================== */
+
+.week-nav{
+
+    position:sticky;
+    top:72px;
+    z-index:999;
+
+    background:white;
+
+    border-bottom:1px solid var(--border);
+
+}
+
+.week-nav-inner{
+
+    display:flex;
+    gap:10px;
+
+    overflow-x:auto;
+
+    padding:12px 0;
+
+}
+
+.week-nav a{
+
+    flex:0 0 auto;
+
+    padding:8px 13px;
+
+    border-radius:8px;
+
+    background:#EDF8FD;
+
+    border:1px solid var(--border);
+
+    color:var(--muted);
+
+    font-family:'Space Mono',monospace;
+    font-size:.72rem;
+    font-weight:700;
+
+    transition:.25s;
+
+}
+
+.week-nav a:hover{
+
+    background:var(--primary);
+    color:white;
+
+}
+
+
+/* ==========================================================
+   HERO
+========================================================== */
+
+.hero{
+
+    padding:70px 0;
+
+    background:
+        radial-gradient(circle at 15% 20%,rgba(94,197,240,.25),transparent 35%),
+        radial-gradient(circle at 88% 12%,rgba(226,6,19,.06),transparent 28%),
+        linear-gradient(180deg,#FFFFFF,var(--page-bg));
+
+}
+
+.label{
+
+    color:var(--primary);
+
+    font-family:'Space Mono',monospace;
+
+    font-size:.75rem;
+
+    letter-spacing:.14em;
+
+    text-transform:uppercase;
+
+    margin-bottom:12px;
+
+}
+
+.hero h1{
+
+    font-family:'DM Serif Display',serif;
+
+    font-size:clamp(2.5rem,6vw,4.8rem);
+
+    line-height:1.05;
+
+    margin-bottom:20px;
+
+}
+
+.hero h1 span{
+
+    color:var(--primary);
+
+}
+
+.hero p{
+
+    max-width:760px;
+
+    color:var(--muted);
+
+}
+
+
+/* ==========================================================
+   OVERALL CARD
+========================================================== */
+
+.overall{
+
+    margin-top:35px;
+
+    background:white;
+
+    border-radius:18px;
+
+    padding:28px;
+
+    border:1px solid var(--border);
+
+    box-shadow:var(--shadow);
+
+}
+
+.overall-head{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    margin-bottom:15px;
+
+}
+
+.value{
+
+    color:var(--primary);
+
+    font-family:'Space Mono',monospace;
+
+    font-weight:700;
+
+}
+
+.track{
+
+    height:10px;
+
+    border-radius:100px;
+
+    background:#E8EEF4;
+
+    overflow:hidden;
+
+}
+
+.fill{
+
+    width:64%;
+
+    height:100%;
+
+    background:linear-gradient(90deg,var(--primary),var(--secondary));
+
+}
+
+.overall p{
+
+    margin-top:12px;
+
+    color:var(--muted);
+
+}
+
+
+/* ==========================================================
+   WEEK SECTION
+========================================================== */
+
+main{
+
+    padding:40px 0 80px;
+
+}
+
+.week{
+
+    margin-bottom:28px;
+
+    background:white;
+
+    border-radius:18px;
+
+    border-left:5px solid var(--upcoming);
+
+    border:1px solid var(--border);
+
+    box-shadow:var(--shadow);
+
+    overflow:hidden;
+
+}
+
+.week.completed{
+
+    border-left-color:var(--success);
+
+}
+
+.week.current{
+
+    border-left-color:var(--primary);
+
+}
+
+
+/* ==========================================================
+   HEADER
+========================================================== */
+
+.head{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+
+    gap:20px;
+
+    padding:26px;
+
+    background:linear-gradient(
+        135deg,
+        rgba(94,197,240,.18),
+        rgba(255,255,255,.95)
+    );
+
+}
+
+.heading{
+
+    display:flex;
+    gap:15px;
+
+}
+
+.num{
+
+    width:62px;
+    height:62px;
+
+    flex:0 0 62px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:14px;
+
+    background:#EAF7FC;
+
+    color:var(--primary);
+
+    font-family:'Space Mono',monospace;
+    font-weight:700;
+
+}
+
+.head h2{
+
+    font-family:'DM Serif Display',serif;
+
+    font-size:2rem;
+
+    color:var(--text);
+
+}
+
+.focus{
+
+    color:var(--muted);
+
+    font-size:.9rem;
+
+}
+
+.status{
+
+    padding:6px 14px;
+
+    border-radius:100px;
+
+    color:white;
+
+    font-size:.72rem;
+
+    font-weight:700;
+
+}
+
+.status.completed{
+
+    background:var(--success);
+
+}
+
+.status.current{
+
+    background:var(--primary);
+
+}
+
+.status.upcoming{
+
+    background:var(--upcoming);
+
+}
+
+
+/* ==========================================================
+   BODY
+========================================================== */
+
+.body{
+
+    padding:28px;
+
+}
+
+.summary{
+
+    color:var(--muted);
+
+    margin-bottom:25px;
+
+}
+
+.grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:18px;
+
+}
+
+.card{
+
+    background:var(--card-bg);
+
+    border:1px solid var(--border);
+
+    border-radius:14px;
+
+    padding:20px;
+
+    transition:.3s;
+
+}
+
+.card:hover{
+
+    background:var(--card-hover);
+
+    transform:translateY(-5px);
+
+}
+
+.card h3{
+
+    margin-bottom:12px;
+
+    font-size:.95rem;
+
+    color:var(--text);
+
+}
+
+.card h3 i{
+
+    color:var(--primary);
+
+    margin-right:8px;
+
+}
+
+.card p{
+
+    color:var(--muted);
+
+    font-size:.86rem;
+
+}
+
+
+/* ==========================================================
+   PDF BUTTONS
+========================================================== */
+
+.resources{
+
+    margin-top:28px;
+
+    padding-top:20px;
+
+    border-top:1px solid var(--border);
+
+    display:flex;
+    flex-wrap:wrap;
+
+    gap:10px;
+
+}
+
+.resources strong{
+
+    width:100%;
+
+}
+
+.pdf{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    padding:.7rem 1rem;
+
+    border-radius:10px;
+
+    background:var(--primary);
+
+    color:white;
+
+    font-size:.82rem;
+
+    font-weight:700;
+
+    transition:.3s;
+
+}
+
+.pdf:hover{
+
+    background:var(--primary-dark);
+
+    transform:translateY(-2px);
+
+}
+
+
+.note{
+
+    width:100%;
+
+    color:var(--muted);
+
+    font-size:.75rem;
+
+}
+
+
+/* ==========================================================
+   BACK TO TOP
+========================================================== */
+
+.top{
+
+    position:fixed;
+
+    right:24px;
+
+    bottom:24px;
+
+    width:46px;
+    height:46px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:12px;
+
+    background:var(--primary);
+
+    color:white;
+
+    box-shadow:0 8px 18px rgba(0,174,239,.35);
+
+}
+
+
+/* ==========================================================
+   FOOTER
+========================================================== */
+
+footer{
+
+    background:#EEF7FC;
+
+    color:var(--muted);
+
+    text-align:center;
+
+    padding:30px;
+
+    border-top:1px solid var(--border);
+
+}
+
+
+/* ==========================================================
+   MOBILE
+========================================================== */
+
+@media(max-width:900px){
+
+.grid{
+
+grid-template-columns:1fr;
+
+}
+
+.head{
+
+flex-direction:column;
+
+}
+
+}
+
+@media(max-width:620px){
+
+html{
+
+scroll-padding-top:145px;
+
+}
+
+.main-nav-inner{
+
+min-height:66px;
+
+}
+
+.week-nav{
+
+top:66px;
+
+}
+
+.btn-outline{
+
+display:none;
+
+}
+
+.heading{
+
+flex-direction:column;
+
+}
+
+.head,
+.body{
+
+padding:20px;
+
+}
+
+.num{
+
+width:52px;
+height:52px;
+flex-basis:52px;
+
+}
+
+}
+.detail-list{
+    color: var(--muted);
+    line-height: 1.9;
+    padding-left: 30px;
+}
+
+.detail-list li{
+    margin-bottom: 10px;
+}
+
+</style>
+
+</head>
+
+<body id="top">
+
+<nav class="main-nav"><div class="container main-nav-inner">
+<a class="brand" href="index.html"><i class="fas fa-wave-square"></i> <span>MECHO</span>SENSE</a>
+<div class="actions"><a class="btn btn-outline" href="index.html#schedule"><i class="fas fa-arrow-left"></i>Progress Summary</a><a class="btn btn-primary" href="index.html"><i class="fas fa-house"></i>Home</a></div>
+</div></nav>
+<nav class="week-nav"><div class="container week-nav-inner"><a href="#week1">W1</a><a href="#week2">W2</a>
+    <a href="#week3">W3</a><a href="#week4">W4</a><a href="#week5">W5</a><a href="#week6">W6</a><a href="#week7">W7</a><a href="#week8">W8</a><a href="#week9">W9</a><a href="#week10">W10</a><a href="#week11">W11</a><a href="#week12">W12</a><a href="#week13">W13</a><a href="#week14">W14</a></div></nav>
+<header class="hero"><div class="container"><div class="label">// Full Development Journal</div>
+<h1>Weekly Project <span>Progress</span></h1>
+<p>A detailed record of the research, hardware development, embedded programming, integration, calibration and machine-learning stages of the vibration-based artificial robotic antenna project.</p>
+<div class="overall"><div class="overall-head"><h3>Overall Project Progress</h3><span class="value">64%</span></div><div class="track"><div class="fill"></div>
+</div><p>Current phase: hardware calibration, followed by offline data testing, Echo State Network training and final performance evaluation.</p></div>
+</div></header>
+
+<main><div class="container">
+
+<section id="week1" class="week completed">
+  <div class="head">
+    <div class="heading">
+        <div class="num">W01</div><div><h2>Week 01 - Literature Review</h2>
+        <p class="focus">Focus: Existing knowledge and biological active tactile sensing</p>
+    </div>
+</div>
+
+    <span class="status completed">Completed</span>
+  </div>
+  <div class="body">
+    <p class="summary">The primary objective of this phase was to establish a strong theoretical foundation for the project titled 
+        "Cancellation of Self-Sensing due to Ego-Motion of Vibration-Based Mechanosensors" . During this week, existing research 
+        related to bio-inspired tactile sensing, vibration-based robotic antennae, ego-motion cancellation, and machine learning approaches 
+        for sensor signal prediction was studied in detail.</p>
+    <div class="week-details">
+
+    <div class="detail-item">
+        <h3> Objective</h3>
+        <p>
+            Establish the biological and theoretical foundation of the self-sensing problem by
+            understanding how insects distinguish environmental contact from vibrations caused by
+            their own movements.
+        </p>
+    </div>
+
+    <div class="detail-item">
+        <h3> Work Completed</h3>
+        <p>
+            <ul class="detail-list">
+            <li>Find about the previous research papers about the project.</li>
+            <li>Studied biological sensing mechanisms used by insects, particularly antenna-based exploration and contact detection.</li>
+            <li>Reviewed the effects of ego-motion on vibration-based sensors and the challenges it introduces to contact detection.</li>
+            <li>Analyzed previous implementations of robotic antenna systems and tactile navigation platforms.</li>
+        </ul>
+
+        </p>
+    </div>
+
+    <div class="detail-item">
+        <h3> Main Outcome</h3>
+        <p>
+            Indecated few research paper about the project.
+        </p>
+    </div>
+
+</div>
+    <div class="resources"><strong>Week 1 Deliverables :  Major Reasearch Papers that Indecated</strong><a class="pdf" href="research.html" target="_blank"><i class="fas fa-file-pdf"></i>Reasearch Papers</a>
+  </div>
+</section>
+
+<section id="week2" class="week completed">
+  <div class="head">
+    <div class="heading"><div class="num">W02</div><div><h2>Week 02 - Literature Review</h2><p class="focus">Focus: Existing knowledge and biological active tactile sensing</p></div></div>
+    <span class="status completed">Completed</span>
+  </div>
+  <div class="body">
+    <p class="summary">Further studied about the background, required knowladge and the technical aspect about the project through the indecated research papers.</p>
+    <div class="detail-item">
+        <h3> Objective</h3>
+        <p>
+            Conduct a comprehensive analysis of the selected research papers and compile a structured literature review that 
+            summarizes existing approaches, identifies current limitations, and establishes the research direction for the proposed system.
+        </p>
+    </div>
+
+    <div class="detail-item">
+        <h3> Work Completed</h3>
+        <p>
+            <ul class="detail-list">
+            <li>Reviewed and analyzed key research papers related to vibration-based mechanosensors, bio-inspired robotic antennae, and tactile sensing.</li>
+            <li>Compared different ego-motion cancellation techniques, sensing strategies, and machine learning approaches reported in previous studies.</li>
+            <li>Identified the strengths, limitations, and research gaps in existing methods.</li>
+            <li>Organized the collected information into a structured literature review document following academic writing standards.</li>
+            <li>Prepared the literature review report to support the project's methodology and system design.</li>
+        </ul>
+
+        </p>
+    </div>
+
+    <div class="detail-item">
+        <h3> Main Outcome</h3>
+        <p>
+            Successfully completed the literature review document, providing a comprehensive understanding of existing research, identifying the limitations of current approaches, 
+            and establishing a clear technical foundation for the design and implementation of the proposed vibration-based robotic antenna system.
+        </p>
+    </div>
+    <div class="resources"><strong>Week 2 Deliverables :  Final Literature Review using Existing Research Papers</strong>
+        <a class="pdf" href="docs/literature-review.pdf" target="_blank"><i class="fas fa-file-pdf"></i>Literature Review</a>
+  </div>
+</section>
+
+<section id="week3" class="week completed">
+  <div class="head">
+    <div class="heading"><div class="num">W03</div><div><h2>Week 03 - Component Research and Acquisition</h2><p class="focus">Focus: Selecting suitable hardware components</p></div></div>
+    <span class="status completed">Completed</span>
+  </div>
+  <div class="body">
+    <p class="summary">Reasearch about the hardware and other components that required</p>
+    <div class="detail-item">
+        <h3> Objective</h3>
+        <p>
+            Identify and evaluate the hardware components, power supply options, communication modules, and supporting equipment required to 
+            develop the vibration-based robotic antenna system, ensuring compatibility with the project requirements.
+        </p>
+    </div>
+
+    <div class="detail-item">
+        <h3> Work Completed</h3>
+        <p>
+            <ul class="detail-list">
+            <li>Researched suitable sensors, actuators, microcontrollers, mobile robot platforms, and mechanical components for the proposed system.</li>
+            <li>Compared different power supply options, motor drivers, communication modules, and supporting electronic components.</li>
+            <li>Evaluated each component based on performance, compatibility, availability, power consumption, and cost.</li>
+            <li>Investigated the integration requirements between the selected hardware components</li>
+            <li>Compiled the findings into a comprehensive component evaluation and selection document.</li>
+        </ul>
+
+        </p>
+    </div>
+
+    <div class="detail-item">
+        <h3> Main Outcome</h3>
+        <p>
+            Finalized the complete list of hardware components required for the project, including sensing, actuation, processing, power management, 
+            and supporting modules, providing a solid foundation for the hardware design and implementation phase.<br>
+            The evaluation process showed that the combination of an Arduino Uno, Raspberry pi module, MPU6050 accelerometers, MG995 servo motors, and a 
+            4WD robotic platform provides the most suitable balance between performance, cost, and ease of implementation. Acrylic tubing was selected for 
+            the antenna structure due to its low weight, ease of fabrication, and favorable vibration transmission characteristics.
+        </p>
+    </div>
+    <div class="resources"><strong>Week 3 Deliverables :  Final Component Selection Report</strong><a class="pdf" href="docs/Component_Selection.pdf" target="_blank"><i class="fas fa-file-pdf"></i>Final Component List</a>
+  </div>
+</section>
+
+<section id="week4" class="week completed">
+  <div class="head">
+    <div class="heading"><div class="num">W04</div><div><h2>Week 04 - Hardware Design and Schematic Drafting</h2><p class="focus">Focus: Mechanical structures and initial electrical architecture</p></div></div>
+    <span class="status completed">Completed</span>
+  </div>
+  <div class="body">
+    <p class="summary">Moved from component selection to 3D mechanical design and initial electrical schematic development.</p>
+    <div class="detail-item">
+        <h3> Objective</h3>
+        <p>
+            Develop the overall hardware architecture and mechanical design of the robotic antenna system by creating the initial 
+            circuit layout, designing the mechanical components, and preparing all custom parts for fabrication.
+        </p>
+    </div>
+
+    <div class="detail-item">
+        <h3> Work Completed</h3>
+        <p>
+            <ul class="detail-list">
+            <li>Designed the preliminary system circuit diagram, including the connections between the microcontroller, sensors, servo motors, power supply, and supporting electronics.</li>
+            <li>Created the overall mechanical layout of the robotic antenna system and determined the placement of each hardware component.</li>
+            <li>Designed the custom mechanical parts required for the project using 3D CAD software.</li>
+            <li>Optimized the 3D models to ensure proper assembly, structural strength, and compatibility with the selected hardware.</li>
+            <li>Submitted the finalized CAD models for 3D printing and fabrication.</li>
+        </ul>
+
+        </p>
+    </div>
+
+    <div class="detail-item">
+        <h3> Main Outcome</h3>
+        <p>
+            Successfully completed the initial electrical and mechanical system design, finalized all custom 3D printable components,
+             and initiated the fabrication process, enabling the transition from the design phase to hardware assembly.
+        </p>
+    </div>
+    <div class="resources"><strong>Week 4 Deliverables :  Initial sketches and final hardware designs</strong>
+        <a class="pdf" href="docs/Initial-schematics.pdf" target="_blank"><i class="fas fa-file-pdf"></i>initial design Schematics & Diagrams</a>
+        <a class="pdf" href="docs/Component-designs.pdf" target="_blank"><i class="fas fa-file-pdf"></i>3D Printed component Designs</a>
+    </div>
+  </div>
+</section>
+
+<section id="week5" class="week completed">
+  <div class="head">
+    <div class="heading"><div class="num">W05</div><div><h2>Week 05 - Hardware Design & Schematic Drafting</h2><p class="focus">Focus: Sensor electronics and mobile platform evaluation</p></div></div>
+    <span class="status completed">Completed</span>
+  </div>
+  <div class="body">
+    <p class="summary">Integrated the sensor electronics concept with the mobile platform and performed initial accelerometer tests.</p>
+    <div class="detail-item">
+        <h3> Objective</h3>
+        <p>
+            Validate the main hardware components by testing the omnidirectional mobile platform and MPU6050 sensor,
+             while preparing the final hardware connection diagram for system integration.
+        </p>
+    </div>
+
+    <div class="detail-item">
+        <h3> Work Completed</h3>
+        <p>
+            <ul class="detail-list">
+            <li>Developed and uploaded controller code in C/C++ to test the movements of the omnidirectional wheel platform.</li>
+            <li>Verified forward, backward, sideways, diagonal, and rotational motion of the mobile base.</li>
+            <li>Tested the MPU6050 accelerometer to confirm correct communication and three-axis acceleration data acquisition.</li>
+            <li>Observed the sensor output under stationary and movement conditions to identify noise and vibration behaviour.</li>
+            <li>Determined the required electrical connections among the microcontroller, motor-control system, MPU6050, servo motors, power supplies, and supporting modules.</li>
+            <li>Prepared the final hardware diagram showing the complete system connections.</li>
+        </ul>
+
+        </p>
+    </div>
+
+    <div class="detail-item">
+        <h3> Main Outcome</h3>
+        <p>
+            Successfully verified the operation of the omnidirectional mobile platform and MPU6050 sensor, and completed the final hardware connection diagram required for
+             the assembly and integration of the robotic antenna system.
+        </p>
+    </div>
+    <div class="resources"><strong>Week 5 Deliverables :  </strong><a class="pdf" href="docs/accelerometer-validation.pdf" target="_blank"><i class="fas fa-file-pdf"></i>Accelerometer Validation</a>
+        <a class="pdf" href="docs/platform-control.pdf" target="_blank"><i class="fas fa-file-pdf"></i>Omni directional Platform Control</a>
+        <a class="pdf" href="docs/Final-cct-diagram.pdf" target="_blank"><i class="fas fa-file-pdf"></i>Final Hardware Circuit Diagram</a>
+        <a class="pdf" href="https://github.com/DivyangaDHS/mechanosensor/tree/main/Week-05" target="_blank"><i class="fas fa-file-pdf"></i>Test codes in week 05</a></div>
+  </div>
+</section>
+
+<section id="week6" class="week completed">
+  <div class="head">
+    <div class="heading"><div class="num">W06</div><div><h2>Week 06 - Coding and Logic Framework Development</h2><p class="focus">Focus: Software architecture and synchronized data flow</p></div></div>
+    <span class="status completed">Completed</span>
+  </div>
+  <div class="body">
+    <p class="summary">Established the programming structure needed to synchronize robot movement commands with accelerometer data.</p>
+    <div class="detail-item">
+        <h3> Objective</h3>
+        <p>
+            Design the overall software architecture and processing logic required to acquire, synchronize, process, and store 
+            sensor data for future Echo State Network (ESN) training and contact detection.
+        </p>
+    </div>
+
+    <div class="detail-item">
+        <h3> Work Completed</h3>
+        <p>
+            <ul class="detail-list">
+            <li>Designed the complete software architecture for the robotic sensing system.</li>
+            <li>Planned the data acquisition flow from the wheel encoders and MPU6050 accelerometer.</li>
+            <li>Developed the logic for converting wheel encoder data into robot velocity using the kinematics transformation matrix.</li>
+            <li>Designed the vibration preprocessing stage using a moving average and low-pass filtering approach to reduce sensor noise.</li>
+            <li>Created the time-synchronization mechanism to align wheel encoder and IMU measurements using common timestamps.</li>
+            <li>Designed the FIFO telemetry buffer for efficient high-speed serial data transmission.</li>
+            <li>Planned the data logging pipeline for exporting synchronized datasets to a computer for offline ESN training and analysis.</li>
+        </ul>
+
+        </p>
+    </div>
+
+    <div class="detail-item">
+        <h3> Main Outcome</h3>
+        <p>
+            Successfully completed the initial software architecture and processing workflow, establishing a structured data acquisition pipeline that integrates motion information, vibration measurements,
+             synchronization, filtering, and data logging for future machine learning development.
+        </p>
+    </div>
+    <div class="resources"><strong>Week 6 Deliverables :  Initial Data flow Architecture</strong><a class="pdf" href="docs/data-flow-architecture.pdf" target="_blank"><i class="fas fa-file-pdf"></i>Data Flow Architecture</a>
+    </div>
+  </div>
+</section>
+<section id="week7" class="week completed">
+  <div class="head">
+    <div class="heading"><div class="num">W07</div><div><h2>Week 07 - Coding & Logic Framework Development & Hardware Assembly & Integration</h2><p class="focus">Focus: IMU acquisition, servo motion and serial telemetry</p></div></div>
+    <span class="status completed">Completed</span>
+  </div>
+  <div class="body">
+    <p class="summary">Developed firmware for real-time accelerometer acquisition, continuous antenna motion and high-speed telemetry.</p>
+    <div class="detail-item">
+        <h3> Objective</h3>
+        <p>
+            Assemble the major mechanical and electronic hardware components of the robotic antenna system and verify the operation 
+            of the pan-tilt mechanism and tip-mounted accelerometer under controlled sinusoidal motion.
+        </p>
+    </div>
+
+    <div class="detail-item">
+        <h3> Work Completed</h3>
+        <p>
+            <ul class="detail-list">
+            <li>Assembled the custom 3D-printed components, pan-tilt mechanism, artificial antenna, servo motors, and supporting electronic hardware.</li>
+            <li>Mounted the MPU6050 accelerometer at the tip of the flexible antenna structure.</li>
+            <li>Connected the accelerometer and pan-tilt servo motors to the microcontroller and verified the electrical connections.</li>
+            <li>Developed test code to produce continuous sinusoidal motion in both the pan and tilt directions.</li>
+            <li>Operated the two servo motors simultaneously to generate a repeatable antenna movement pattern.</li>
+            <li>Acquired the three-axis acceleration output from the tip-mounted MPU6050 while the antenna was moving.</li>
+            <li>Transmitted the acceleration measurements to a computer through serial communication for observation and plotting.</li>
+            <li>Confirmed that the sensor captured the vibrations generated by the pan-tilt movement.</li>
+        </ul>
+
+        </p>
+    </div>
+
+    <div class="detail-item">
+        <h3> Main Outcome</h3>
+        <p>
+            Successfully assembled the initial robotic antenna hardware and verified that the pan-tilt mechanism could produce controlled 
+            sinusoidal motion. The tip-mounted MPU6050 also generated measurable acceleration signals during movement, confirming
+             that the assembled system was suitable for further vibration analysis, calibration, and ego-motion cancellation experiments.
+        </p>
+    </div>
+    <div class="resources"><strong>Week 7 Deliverables :  Sinusoidal motion testing results</strong><a class="pdf" href="docs/acceleration-results.pdf" target="_blank"><i class="fas fa-file-pdf"></i>accelerometer and antenna test results</a>
+        <a class="pdf" href="https://github.com/DivyangaDHS/mechanosensor/tree/main/Week-07" target="_blank"><i class="fas fa-file-pdf"></i>Test codes for week 07</a></div>
+  </div>
+</section>
+<section id="week8" class="week completed">
+  <div class="head">
+    <div class="heading"><div class="num">W08</div><div><h2>Week 08 - Coding & Logic Framework Development & Hardware Assembly & Integration</h2><p class="focus">Focus: Physical component assembly and chassis mounting</p></div></div>
+    <span class="status completed">Completed</span>
+  </div>
+  <div class="body">
+    <p class="summary">Mounted the designed structures, compliant antenna probe and electronic boards on the 4WD chassis.</p>
+    <div class="detail-item">
+        <h3> Objective</h3>
+        <p>
+            Design a robust mechanical housing and cable management system to securely accommodate all hardware components 
+            while minimizing unwanted vibrations and ensuring accurate accelerometer measurements.
+        </p>
+    </div>
+
+    <div class="detail-item">
+        <h3> Work Completed</h3>
+        <p>
+            <ul class="detail-list">
+            <li>Designed protective housings for the microcontroller, power supply, and electronic modules.</li>
+            <li>Planned the placement of all hardware components within the robotic platform for improved accessibility and structural stability.</li>
+            <li>Designed a cable management layout to organize power and communication wiring throughout the robot.</li>
+            <li>Identified potential sources of mechanical vibration caused by loose cables and unsecured components.</li>
+            <li>Optimized the housing and cable routing design to reduce unnecessary movement during robot operation.</li>
+        </ul>
+
+        </p>
+    </div>
+
+    <div class="detail-item">
+        <h3> Main Outcome</h3>
+        <p>
+            Successfully completed the housing and cable management design, providing a well-organized mechanical layout that improves 
+            structural stability and reduces the likelihood of vibration-induced measurement errors during system operation.
+        </p>
+    </div>
+    <div class="resources"><strong>Week 8 Deliverables :  Initial wiring Schematics</strong><a class="pdf" href="docs/Hand-sketched-wiring.pdf" target="_blank"><i class="fas fa-file-pdf"></i>Hand Drawn Circuit Routing</a></div>
+  </div>
+</section>
+
+<section id="week9" class="week completed">
+  <div class="head">
+    <div class="heading"><div class="num">W09</div><div><h2>Week 09 - Coding & Logic Framework Development & Hardware Assembly & Integration</h2><p class="focus">Focus: Electrical completion and live driving verification</p></div></div>
+    <span class="status completed">Completed</span>
+  </div>
+  <div class="body">
+    <p class="summary">Finalised all remaining hardware connections and tested the unified system under live movement.</p>
+    <div class="detail-item">
+        <h3> Objective</h3>
+        <p>
+            Assemble the complete robotic platform by installing all designed housings, securing hardware 
+            components, and integrating the mechanical and electrical systems into a stable prototype.
+        </p>
+    </div>
+
+    <div class="detail-item">
+        <h3> Work Completed</h3>
+        <p>
+            <ul class="detail-list">
+            <li>Installed the fabricated housings onto the robotic platform</li>
+            <li>Routed and secured all power and communication cables according to the cable management design.</li>
+            <li>Fixed the microcontroller, sensors, motor drivers, batteries, and supporting electronics firmly inside the chassis.</li>
+            <li>Mounted the pan-tilt mechanism, artificial antenna, and tip-mounted MPU6050 sensor onto the robot.</li>
+            <li>Verified that all hardware components remained securely fixed during robot movement and antenna operation.</li>
+            <li>Performed a complete system inspection to ensure proper mechanical alignment and structural rigidity.</li>
+        </ul>
+
+        </p>
+    </div>
+
+    <div class="detail-item">
+        <h3> Main Outcome</h3>
+        <p>
+            Successfully completed the final mechanical assembly and system integration of the robotic platform. All 
+            hardware components were securely mounted and organized, significantly improving structural stability 
+            and minimizing unwanted mechanical vibrations that could affect accelerometer measurements.
+        </p>
+    </div>
+    <div class="resources"><strong>Week 9 Deliverables :  </strong><a class="pdf" href="docs/Final-covering.pdf" target="_blank"><i class="fas fa-file-pdf"></i>Final Covering Design</a><a class="pdf" href="Video.html" target="_blank"><i class="fas fa-file-pdf"></i>Video of testing the Robot</a></div>
+  </div>
+</section>
+
+<section id="week10" class="week current">
+  <div class="head">
+    <div class="heading"><div class="num">W10</div><div><h2>Week 10 - Hardware Calibration</h2><p class="focus">Focus: Sensor offsets, noise floor and motion response</p></div></div>
+    <span class="status current">In Progress</span>
+  </div>
+  <div class="body">
+    <p class="summary">Characterise accelerometer bias, baseline noise and motion-induced vibration under controlled conditions.</p>
+    <div class="detail-item">
+        <h3> Objective</h3>
+        <p>
+            Investigate real-time filtering techniques to reduce noise in the MPU6050 sensor data and identify the most 
+            suitable algorithm for hardware calibration and embedded implementation in the robotic antenna system.
+        </p>
+    </div>
+
+    <div class="detail-item">
+        <h3> Work Completed</h3>
+        <p>
+            <ul class="detail-list">
+            <li>Studied the operating principles of Kalman, Madgwick, and Low-Pass filters for IMU signal processing.</li>
+            <li>Compared the computational complexity, accuracy, and real-time performance of each filtering technique.</li>
+            <li>Investigated how each filter estimates and corrects sensor measurements affected by noise and vibration.</li>
+            <li>Evaluated the suitability of each algorithm for implementation on embedded microcontrollers with limited computational resources.</li>
+            <li>Analyzed the advantages and limitations of each method for improving accelerometer measurements before machine learning and hardware calibration.</li>
+        </p>
+    </div>
+
+    <div class="detail-item">
+        <h3> Main Outcome</h3>
+        <p>
+            Successfully assembled the initial robotic antenna hardware and verified that the pan-tilt mechanism could produce controlled 
+            sinusoidal motion. The tip-mounted MPU6050 also generated measurable acceleration signals during movement, confirming
+             that the assembled system was suitable for further vibration analysis, calibration, and ego-motion cancellation experiments.
+        </p>
+    </div>
+    <div class="resources"><strong>Week 10 Deliverables :  </strong><a class="pdf" href="docs/filter-diagram.pdf" target="_blank"><i class="fas fa-file-pdf"></i>Kalman & Madgwick Filter Diagrams</a>
+    <a class="pdf" href="docs/Filter-ref.pdf" target="_blank"><i class="fas fa-file-pdf"></i>Reference Document for Filters</a></div>
+  </div>
+</section>
+
+<section id="week11" class="week upcoming">
+  <div class="head">
+    <div class="heading"><div class="num">W11</div><div><h2>Calibration and Test Preparation</h2><p class="focus">Focus: Calibration refinement and experiment setup</p></div></div>
+    <span class="status upcoming">Upcoming</span>
+  </div>
+  <div class="body">
+    <p class="summary">Refine calibration parameters and finalise a repeatable procedure for contact and non-contact tests.</p>
+    <div class="grid">
+      <div class="card"><h3><i class="fas fa-bullseye"></i>Objective</h3><p>Prepare a stable data-collection process.</p></div>
+      <div class="card"><h3><i class="fas fa-gears"></i>Planned Work</h3><p>Define motion profiles, contact conditions, trial repetition and data-labelling procedures.</p></div>
+      <div class="card"><h3><i class="fas fa-circle-check"></i>Expected Outcome</h3><p>Produce a validated experimental protocol for offline testing.</p></div>
+    </div>
+    <div class="resources"><strong>Week 11 documents:</strong><a class="pdf" href="pdf/week-11-test-procedure.pdf" target="_blank"><i class="fas fa-file-pdf"></i>Week 11 Test Procedure</a><p class="note">Place the PDFs inside the <code>pdf</code> folder or edit the file paths to match your filenames.</p></div>
+  </div>
+</section>
+<section id="week12" class="week upcoming">
+  <div class="head">
+    <div class="heading"><div class="num">W12</div><div><h2>Offline Data Testing and Model Training</h2><p class="focus">Focus: Dataset preparation and initial ESN training</p></div></div>
+    <span class="status upcoming">Upcoming</span>
+  </div>
+  <div class="body">
+    <p class="summary">Collect labelled measurements and begin training the ESN to predict self-induced vibration.</p>
+    <div class="grid">
+      <div class="card"><h3><i class="fas fa-bullseye"></i>Objective</h3><p>Develop a forward model of ego-motion sensor response.</p></div>
+      <div class="card"><h3><i class="fas fa-gears"></i>Planned Work</h3><p>Prepare the dataset, configure the reservoir and train the ESN readout layer.</p></div>
+      <div class="card"><h3><i class="fas fa-circle-check"></i>Expected Outcome</h3><p>Obtain an initial trained model capable of predicting self-generated signals.</p></div>
+    </div>
+    <div class="resources"><strong>Week 12 documents:</strong><a class="pdf" href="pdf/week-12-esn-training.pdf" target="_blank"><i class="fas fa-file-pdf"></i>Week 12 Esn Training</a><a class="pdf" href="pdf/week-12-dataset.pdf" target="_blank"><i class="fas fa-file-pdf"></i>Week 12 Dataset</a></div>
+  </div>
+</section>
+<section id="week13" class="week upcoming">
+  <div class="head">
+    <div class="heading"><div class="num">W13</div><div><h2>Offline Testing and Model Optimisation</h2><p class="focus">Focus: Validation and ESN parameter refinement</p></div></div>
+    <span class="status upcoming">Upcoming</span>
+  </div>
+  <div class="body">
+    <p class="summary">Validate the ESN with unseen data and optimise its reservoir configuration.</p>
+    <div class="grid">
+      <div class="card"><h3><i class="fas fa-bullseye"></i>Objective</h3><p>Improve model generalisation and prediction accuracy.</p></div>
+      <div class="card"><h3><i class="fas fa-gears"></i>Planned Work</h3><p>Tune spectral radius, reservoir size, sparsity and regularisation using validation results.</p></div>
+      <div class="card"><h3><i class="fas fa-circle-check"></i>Expected Outcome</h3><p>Produce a validated and optimised ego-motion prediction model.</p></div>
+    </div>
+    <div class="resources"><strong>Week 13 documents:</strong><a class="pdf" href="pdf/week-13-model-validation.pdf" target="_blank"><i class="fas fa-file-pdf"></i>Week 13 Model Validation</a><p class="note">Place the PDFs inside the <code>pdf</code> folder or edit the file paths to match your filenames.</p></div>
+  </div>
+</section>
+<section id="week14" class="week upcoming">
+  <div class="head">
+    <div class="heading"><div class="num">W14</div><div><h2>Performance Evaluation</h2><p class="focus">Focus: Cancellation effectiveness and final assessment</p></div></div>
+    <span class="status upcoming">Upcoming</span>
+  </div>
+  <div class="body">
+    <p class="summary">Evaluate the final system under realistic movement and contact conditions.</p>
+    <div class="grid">
+      <div class="card"><h3><i class="fas fa-bullseye"></i>Objective</h3><p>Measure the overall effectiveness of the ego-motion cancellation approach.</p></div>
+      <div class="card"><h3><i class="fas fa-gears"></i>Planned Work</h3><p>Compare measured and predicted signals, residual error and contact-detection reliability.</p></div>
+      <div class="card"><h3><i class="fas fa-circle-check"></i>Expected Outcome</h3><p>Generate final quantitative results, limitations and recommendations.</p></div>
+    </div>
+    <div class="resources"><strong>Week 14 documents:</strong><a class="pdf" href="pdf/week-14-performance-evaluation.pdf" target="_blank"><i class="fas fa-file-pdf"></i>Week 14 Performance Evaluation</a><a class="pdf" href="pdf/final-project-report.pdf" target="_blank"><i class="fas fa-file-pdf"></i>Final Project Report</a></div>
+  </div>
+</section></div></main>
+<a class="top" href="#top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></a>
+<footer>MECHOSENSE — Ego-Motion Cancellation in Vibration-Based Mechanosensors</footer>
+</body></html>
