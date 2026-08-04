@@ -300,6 +300,23 @@ a{
 }
 
 
+.image-row {
+    display: flex;
+    justify-content: center;
+    gap: 20px;          /* Space between images */
+    margin-top: 20px;
+    flex-wrap: wrap;    /* Makes them stack on small screens */
+}
+
+.image-row img {
+    width: 45%;         /* Each image takes about half the width */
+    max-width: 400px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+
 /* ==========================================================
    OVERALL CARD
 ========================================================== */
@@ -1308,6 +1325,10 @@ flex-basis:52px;
             <li>Inspected the recorded signals to identify measurement noise, signal offsets, and other irregularities.</li>
             <li>Applied initial signal preprocessing and low-pass filtering to improve data quality before model training.</li>
         </p>
+      <div class="image-row">
+        <img src="img/Robo01.JPEG" alt="Servo Movement">
+        <img src="img/Robo02.JPEG" alt="Recorded Sensor Data">
+    </div>
     </div>
 
     <div class="detail-item">
